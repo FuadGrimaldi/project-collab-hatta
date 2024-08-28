@@ -4,4 +4,4 @@ Pada suatu hari, Hatta, seorang siswa kelas 8 yang sangat suka bermain game onli
 
 Setelah tiba di warung, Riko langsung memilih voucher game favoritnya. Namun, sebelum membayar, ia mengingat nasihat dari orang tuanya untuk selalu berhati-hati saat berbelanja. Ia memastikan bahwa nominal voucher yang ia pilih sesuai dengan jumlah uang yang telah ditabungnya. Setelah yakin, ia memberikan uangnya kepada pemilik warung dan menerima voucher tersebut dengan senang hati.
 
-Sepulang sekolah, Riko langsung memasukkan kode voucher ke dalam akun gamenya. Dengan perasaan gembira, ia melihat saldo gamenya bertambah, dan ia pun bisa meng-upgrade karakter kesayangannya. Hari itu menjadi hari yang menyenangkan bagi Riko, karena ia bisa menikmati hasil kerja kerasnya sendiri.
+Sepulang sekolah, Riko langsung memasukkan kode voucher ke dalam akun gamenya. Voucher yang didapatkan adalah minimal pembelian sebanyak 5000. Dengan perasaan gembira, ia melihat saldo gamenya bertambah, dan ia pun bisa meng-upgrade karakter kesayangannya. Hari itu menjadi hari yang menyenangkan bagi Riko, karena ia bisa menikmati hasil kerja kerasnya sendiri.
