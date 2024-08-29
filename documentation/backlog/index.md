@@ -20,8 +20,11 @@ This Epic involves all functionalities related to user profiles on the platform.
    - As a user, I want to view and update my profile information so that I can keep my details up to date.
    
 4. **Manage User Roles**
-   - As an admin, I want to assign roles (seller, buyer) to users so that they have appropriate access rights on the platform.
-   
+   - As an admin (who is also a seller), I want to manage user roles and ensure users have appropriate access rights on the platform. This includes setting roles like buyer for regular users.
+     - **Acceptance Criteria:**
+       - Admin can assign roles such as "buyer" to users.
+       - Admin can view and edit user details and roles.
+
 5. **Profile Security**
    - As a user, I want to update my password and manage my account security settings so that my account remains secure.
 
@@ -41,16 +44,13 @@ This Epic covers the creation, management, and display of products on the platfo
 1. **Create and Manage Products**
    - As a seller, I want to create and manage my products so that I can sell them on the platform.
    
-2. **Approve Products**
-   - As an admin, I want to review and approve products submitted by sellers so that only appropriate products are listed.
-   
-3. **Product Details Management**
+2. **Product Details Management**
    - As a seller, I want to add and update detailed information about my products (tags, release date, company name, language, etc.) so that buyers have all the necessary information.
 
-4. **Manage Product Gallery**
+3. **Manage Product Gallery**
    - As a seller, I want to upload and manage product images so that my products are visually appealing to buyers.
    
-5. **Apply Filters to Products**
+4. **Apply Filters to Products**
    - As a user, I want to filter products by criteria like best seller, trending, and best deals so that I can find products that interest me.
      - **Acceptance Criteria:**
        - Products can be tagged with multiple filters (e.g., Best Seller, Trending).
