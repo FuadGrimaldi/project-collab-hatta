@@ -11,15 +11,14 @@ import {
 } from "react-icons/fa";
 import Image from "next/image";
 
-export default function Register() {
+export default function Login() {
   const [showPassword, setShowPassword] = useState(false);
-  const [showRetypePassword, setShowRetypePassword] = useState(false);
 
   return (
     <section className="bg-black min-h-screen flex">
       <div className="w-full md:w-1/2 flex items-center justify-center p-4">
         <div className="w-full max-w-lg mx-5">
-          <div className="flex items-center mb-20">
+          <div className="fixed top-12 flex items-center mb-20">
             <Link href="/" className="text-white hover:text-gray-300">
               <FaArrowLeft className="mr-3" />
             </Link>
@@ -30,7 +29,7 @@ export default function Register() {
               height={40}
             />
           </div>
-          <h1 className="text-xl md:text-2xl font-bold text-white">
+          <h1 className="text-xl md:text-2xl font-bold text-white mt-0 md:mt-16 lg:mt-8">
             Login Account
           </h1>
           <p className="text-xs md:text-sm font-light text-gray-300 mb-6">
