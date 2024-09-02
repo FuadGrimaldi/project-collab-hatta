@@ -1,5 +1,6 @@
 "use client";
 
+import SliderImage from "../components/SliderImage";
 import Navbar from "../components/Navbar";
 import { useState } from "react";
 
@@ -9,7 +10,7 @@ export default function Home() {
   return (
     <>
       <Navbar isLoggedIn={isLoggedIn} userName={"Firyal"} />
-      <main className="flex min-h-screen flex-col items-center justify-between p-24"></main>
+      <SliderImage />
     </>
   );
 }
