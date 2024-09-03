@@ -1,0 +1,36 @@
+version: '3.8'
+
+services:
+  web:
+    build: .
+    container_name: gasruk_app
+    env_file:
+      - .env
+    ports:
+      - "${APP_PUBLIC_PORT}:${APP_PUBLIC_PORT}"
+    volumes:
+      - "/Users/mac/Documents/Development/Web/GITS/colabs-project-hatta/backend:/var/www/html:rw" #Fitur live coding
+      - "/Users/mac/Documents/Development/Web/GITS/colabs-project-hatta/backend/public:/var/www/html/public"
+    command: ["php", "artisan", "serve", "--host", "0.0.0.0", "--port", "${APP_PUBLIC_PORT}"]
+    networks:
+      - app-network-gasruk
+
+  mysql:
+    image: mysql:5.7
+    container_name: db-gasruk
+    environment:
+      MYSQL_DATABASE: ${DB_DATABASE}
+      MYSQL_USER: ${DB_USERNAME}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+    ports:
+      - "${MYSQL_PUBLIC_PORT}:3306"
+    volumes:
+      - /Users/mac/Documents/Development/Web/GITS/colabs-project-hatta/backend/dbdata:/var/lib/mysql
+    command: --sql_mode="ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION"
+    networks:
+      - app-network-gasruk
+
+networks:
+  app-network-gasruk:
+    driver: bridge
