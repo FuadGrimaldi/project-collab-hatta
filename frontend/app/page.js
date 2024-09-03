@@ -6,6 +6,7 @@ import { useState } from "react";
 import BestDealsList from "../components/landingpage/products/BestDealsList";
 import TrendingList from "../components/landingpage/products/TrendingList";
 import SectionHeader from "../components/landingpage/SectionHeader";
+import NewsList from "../components/landingpage/products/NewsList";
 
 export default function Home() {
   const [isLoggedIn, setIsLoggedIn] = useState(true);
@@ -30,6 +31,12 @@ export default function Home() {
       <div className="mt-4 md:p-16 p-8">
         <SectionHeader title="Trending" subtitle="Lorem ipsum dolor sit amet" />
         <TrendingList />
+      </div>
+
+      {/* News */}
+      <div className="mt-4 md:p-16 p-8">
+        <SectionHeader title="News" subtitle="Lorem ipsum dolor sit amet" />
+        <NewsList />
       </div>
     </>
   );
