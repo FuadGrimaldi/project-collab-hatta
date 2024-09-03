@@ -1,30 +1,30 @@
 "use client";
 
-import Trending from "./Trending";
+import BestSellers from "./BestSellers";
 
-export default function TrendingList() {
+export default function BestSellerList() {
   const vouchers = [
     {
       id: 1,
       image: "/images/trending1.png",
       title: "Overwatch Game - Battle.net",
-      price: 300000,
-      discount: 25,
+      price: 240000,
+      discount: 20,
       wishlist: false,
     },
     {
       id: 2,
       image: "/images/trending2.png",
       title: "Voucher Game B",
-      price: 159000,
-      discount: 20,
+      price: 350000,
+      discount: 14,
       wishlist: true,
     },
     {
       id: 3,
       image: "/images/slider3.jpg",
       title: "Voucher Game C",
-      price: 200000,
+      price: 500000,
       discount: 25,
       wishlist: false,
     },
@@ -32,10 +32,10 @@ export default function TrendingList() {
   ];
 
   return (
-    <div className="w-full overflow-x-auto scrollbar-hide">
-      <div className="flex gap-8">
-        {[...vouchers, ...vouchers, ...vouchers].map((voucher, index) => (
-          <Trending
+    <div className="w-full ">
+      <div className="flex flex-col gap-4">
+        {[...vouchers, ...vouchers].map((voucher, index) => (
+          <BestSellers
             key={`${voucher.id}-${index}`}
             image={voucher.image}
             title={voucher.title}

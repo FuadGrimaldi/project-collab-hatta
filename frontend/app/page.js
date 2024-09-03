@@ -8,6 +8,9 @@ import TrendingList from "../components/landingpage/products/TrendingList";
 import SectionHeader from "../components/landingpage/SectionHeader";
 import NewsList from "../components/landingpage/products/NewsList";
 import RecommendedList from "../components/landingpage/products/RecommendedList";
+import BestSellerList from "../components/landingpage/products/BestSellerList";
+import LatestReleaseList from "../components/landingpage/products/LatestReleaseList";
+import PreordersList from "../components/landingpage/products/PreordersList";
 
 export default function Home() {
   const [isLoggedIn, setIsLoggedIn] = useState(true);
@@ -44,6 +47,31 @@ export default function Home() {
           subtitle="Lorem ipsum dolor sit amet"
         />
         <RecommendedList />
+      </div>
+
+      {/* Best Sellers */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-16 md:p-16 p-8">
+        <div className="mt-4">
+          <SectionHeader
+            title="Best Sellers"
+            subtitle="Lorem ipsum dolor sit amet"
+          />
+          <BestSellerList />
+        </div>
+        <div className="mt-4 ">
+          <SectionHeader
+            title="Latest Release"
+            subtitle="Lorem ipsum dolor sit amet"
+          />
+          <LatestReleaseList />
+        </div>
+        <div className="mt-4 ">
+          <SectionHeader
+            title="Pre-Orders"
+            subtitle="Lorem ipsum dolor sit amet"
+          />
+          <PreordersList />
+        </div>
       </div>
 
       {/* News */}

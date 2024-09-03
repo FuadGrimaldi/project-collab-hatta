@@ -1,41 +1,41 @@
 "use client";
 
-import Trending from "./Trending";
+import BestSellers from "./BestSellers";
 
-export default function TrendingList() {
+export default function PreordersList() {
   const vouchers = [
     {
       id: 1,
-      image: "/images/trending1.png",
+      image: "/images/pre2.png",
       title: "Overwatch Game - Battle.net",
-      price: 300000,
-      discount: 25,
+      price: 100000,
+      discount: 5,
       wishlist: false,
     },
     {
       id: 2,
-      image: "/images/trending2.png",
+      image: "/images/rec2.png",
       title: "Voucher Game B",
-      price: 159000,
+      price: 150000,
       discount: 20,
       wishlist: true,
     },
     {
       id: 3,
-      image: "/images/slider3.jpg",
-      title: "Voucher Game C",
-      price: 200000,
-      discount: 25,
+      image: "/images/pre1.png",
+      title: "Steam Gift Card 5 USD Steam Key Global",
+      price: 220000,
+      discount: 12,
       wishlist: false,
     },
     // ... tambahkan voucher lainnya
   ];
 
   return (
-    <div className="w-full overflow-x-auto scrollbar-hide">
-      <div className="flex gap-8">
-        {[...vouchers, ...vouchers, ...vouchers].map((voucher, index) => (
-          <Trending
+    <div className="w-full ">
+      <div className="flex flex-col gap-4">
+        {[...vouchers, ...vouchers].map((voucher, index) => (
+          <BestSellers
             key={`${voucher.id}-${index}`}
             image={voucher.image}
             title={voucher.title}
