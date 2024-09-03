@@ -72,6 +72,7 @@ export default function BestDealsList() {
         <div className="flex gap-4">
           {[...vouchers, ...vouchers, ...vouchers].map((voucher, index) => (
             <BestDeals
+              className={"min-w-64 md:min-w-96"}
               key={`${voucher.id}-${index}`}
               image={voucher.image}
               title={voucher.title}

@@ -4,11 +4,20 @@ import { calculateDiscountedPrice } from "../../../lib/priceUtils";
 import SeeDetailButton from "../button/SeeDetailButton";
 import { FaRegHeart, FaHeart } from "react-icons/fa";
 
-export default function BestDeals({ image, title, price, discount, wishlist }) {
+export default function BestDeals({
+  image,
+  title,
+  price,
+  discount,
+  wishlist,
+  className,
+}) {
   const discountedPrice = calculateDiscountedPrice(price, discount);
 
   return (
-    <div className="bg-black h-full min-w-64 md:min-w-96 border border-gray-900 shadow-md overflow-hidden flex flex-col">
+    <div
+      className={`bg-black h-full  border border-gray-900 shadow-md overflow-hidden flex flex-col ${className}`}
+    >
       <div className="relative h-40 md:h-48 w-full group">
         <Image src={image} layout="fill" objectFit="cover" alt={title} />
         <div className="absolute top-0 left-0 bg-[#F84343] text-white px-3 py-1 text-xs md:text-sm ">
