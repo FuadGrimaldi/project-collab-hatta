@@ -3,14 +3,15 @@
 import SliderImage from "../components/landingpage/SliderImage";
 import Navbar from "../components/landingpage/Navbar";
 import { useState } from "react";
-import BestDealsList from "../components/landingpage/products/BestDealsList";
-import TrendingList from "../components/landingpage/products/TrendingList";
+import BestDealsList from "../components/landingpage/homepage/BestDealsList";
+import TrendingList from "../components/landingpage/homepage/TrendingList";
 import SectionHeader from "../components/landingpage/SectionHeader";
-import NewsList from "../components/landingpage/products/NewsList";
-import RecommendedList from "../components/landingpage/products/RecommendedList";
-import BestSellerList from "../components/landingpage/products/BestSellerList";
-import LatestReleaseList from "../components/landingpage/products/LatestReleaseList";
-import PreordersList from "../components/landingpage/products/PreordersList";
+import NewsList from "../components/landingpage/homepage/NewsList";
+import RecommendedList from "../components/landingpage/homepage/RecommendedList";
+import BestSellerList from "../components/landingpage/homepage/BestSellerList";
+import LatestReleaseList from "../components/landingpage/homepage/LatestReleaseList";
+import PreordersList from "../components/landingpage/homepage/PreordersList";
+import Footer from "../components/landingpage/Footer";
 
 export default function Home() {
   const [isLoggedIn, setIsLoggedIn] = useState(true);
@@ -79,6 +80,8 @@ export default function Home() {
         <SectionHeader title="News" subtitle="Lorem ipsum dolor sit amet" />
         <NewsList />
       </div>
+
+      <Footer />
     </>
   );
 }
