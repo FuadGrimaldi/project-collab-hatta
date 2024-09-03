@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { useState, useEffect, useCallback } from "react";
 
 export default function SliderImage() {
@@ -54,7 +55,7 @@ export default function SliderImage() {
                 objectFit="cover"
                 alt={voucher.title}
               />
-              <div className="absolute top-5 -right-5 md:top-20 md:right-20 w-60 md:w-80 text-white p-4">
+              <div className="absolute top-5 -right-5 md:top-20 md:right-20 w-60 md:w-80 text-white p-4 z-10">
                 <span className="text-[10px] md:text-sm bg-yellow-500 px-2 py-1">
                   NEW
                 </span>
@@ -65,7 +66,8 @@ export default function SliderImage() {
                   Lorem ipsum dolor sit amet consectetur adipisicing elit.
                   Quisquam, quos. Lorem ipsum dolor sit amet consectetur
                 </p>
-                <button className="bg-green-500 text-white w-24 text-[10px] md:text-base md:w-40 px-2 md:px-4 py-1 md:py-2 mt-4">
+
+                <button className="bg-green-500 hover:bg-green-600 transition-colors duration-300 text-white w-24 text-[10px] md:text-base md:w-40 px-2 md:px-4 py-1 md:py-2 mt-4 ">
                   Buy Now
                 </button>
               </div>

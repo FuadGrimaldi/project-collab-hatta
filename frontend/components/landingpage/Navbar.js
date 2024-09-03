@@ -35,7 +35,7 @@ export default function Navbar({ isLoggedIn, userName }) {
   };
 
   return (
-    <nav className="bg-white shadow-md py-4">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-white shadow-md py-4">
       <div className="container mx-auto flex items-center justify-between px-4">
         {/* Hamburger Menu for Mobile */}
         <div className="sm:flex md:hidden">
