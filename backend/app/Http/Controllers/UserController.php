@@ -31,6 +31,7 @@ class UserController extends Controller
 
             // The UserLoginRequest will handle the validation
             $data = $request->validated();
+            
 
             // Attempt to find the user
             $user = User::where('email', $data['email'])->first();
@@ -80,7 +81,7 @@ class UserController extends Controller
             $user->token = $tokenService->token;
             
             DB::commit();
-            return ResponseFormatter::success(new UserResource($user), 'User registered successfully');
+            return ResponseFormatter::success(new UserResource($user), 'User registered successfully', 201);
 
         } catch (\Exception $e) {
             DB::rollBack();

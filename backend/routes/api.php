@@ -6,7 +6,7 @@ use App\Http\Controllers\UserController;
 
 # PUBLIC
 Route::post('/login', [UserController::class, 'login']);
-Route::post('/users/register', [UserController::class, 'register']);
+Route::post('/users/register', [UserController::class, 'register']); 
 
 # PRIVATE
 Route::middleware(['auth-token'])->group(function () {
