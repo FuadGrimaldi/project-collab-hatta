@@ -28,18 +28,18 @@ export default function BestDeals({
         </div>
         <SeeDetailButton />
       </div>
-      <div className="p-4 flex flex-col flex-grow">
+      <div className="p-3 md:p-4 flex flex-col flex-grow">
         <h3 className="text-md md:text-lg font-semibold mb-2 text-white line-clamp-2 h-12 md:h-14">
           {title}
         </h3>
         <div className="flex-grow"></div>
         <div className="flex justify-between items-end">
-          <CartButton />
+          <CartButton className="min-w-14 md:min-w-24 " />
           <div className="flex flex-col items-end">
             <span className="text-gray-500 text-xs md:text-sm line-through">
               Rp {price.toLocaleString()}
             </span>
-            <span className="text-md md:text-lg font-bold text-blue-600">
+            <span className="text-sm md:text-lg font-bold text-blue-600">
               Rp {discountedPrice.toLocaleString()}
             </span>
           </div>
