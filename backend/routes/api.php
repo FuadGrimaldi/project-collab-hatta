@@ -2,16 +2,15 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\AuthController;
+use App\Http\Controllers\UserController;
 
 # PUBLIC
-Route::post('/login', [AuthController::class, 'login']);
-Route::post('/register', [AuthController::class, 'register']);
+Route::post('/login', [UserController::class, 'login']);
+Route::post('/users/register', [UserController::class, 'register']);
 
 # PRIVATE
-Route::middleware(['auth:sanctum', 'ability:buyer,seller'])->group(function () {
-    Route::get('/profile', [AuthController::class, 'getProfile']);
-    
+Route::middleware(['auth-token'])->group(function () {
+    Route::get('/users/profile', [UserController::class, 'getProfile']);
+    Route::post('/users/logout', [UserController::class, 'logout']); 
 });
-
 
