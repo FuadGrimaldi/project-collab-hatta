@@ -69,3 +69,6 @@ This architecture outlines the integration of a Laravel backend with a Next.js f
 - **Docker**: Containers for easy deployment and scaling of both frontend and backend services.
 - **CI/CD Pipeline**: Automated testing, building, and deployment of code changes.
 
+## Arsitecture
+
+![Alt text](./arsitecture.png)
