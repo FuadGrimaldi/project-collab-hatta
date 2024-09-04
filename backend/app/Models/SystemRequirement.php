@@ -24,4 +24,12 @@ class SystemRequirement extends Model
     protected $fillable = [
         'requirement',
     ];
+
+    /**
+     * Get the detail system requirements for the master system requirement.
+     */
+    public function detailSystemRequirements()
+    {
+        return $this->hasMany(DetailSystemRequireMent::class, 'master_system_requirement_id');
+    }
 }
