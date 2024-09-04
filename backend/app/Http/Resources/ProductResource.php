@@ -4,6 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
+use App\Helpers\RequirementFormatter;   
 
 class ProductResource extends JsonResource
 {
@@ -29,6 +30,8 @@ class ProductResource extends JsonResource
                 'size' => $this->productDetail->size,
                 'language' => $this->productDetail->language,
             ] : null,
+            // 'requirements' => $this->productRequirements->pluck('masterSystemRequirement.requirement') ?? [],
+            'requirements' => RequirementFormatter::getFormattedRequirements($this->id),
             'images' => $this->galleries->pluck('image_url') ?? [],
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,

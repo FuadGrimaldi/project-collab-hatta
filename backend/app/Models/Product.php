@@ -34,4 +34,8 @@ class Product extends Model
     {
         return $this->hasMany(Gallery::class, 'product_id', 'id');
     }
+    public function productRequirements()
+    {
+        return $this->hasMany(ProductRequirements::class, 'product_id', 'id');
+    }
 }
