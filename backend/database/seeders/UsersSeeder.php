@@ -15,6 +15,7 @@ class UsersSeeder extends Seeder
     {
         DB::table('users')->insert([
             [
+                'username' => 'fufufuad',
                 'email' => 'fuad@gmail.com',
                 'email_verified_at' => now(),
                 'password' => bcrypt('1234fuad'),
@@ -29,6 +30,7 @@ class UsersSeeder extends Seeder
                 'updated_at' => now(),
             ],
             [
+                'username' => 'team2',
                 'email' => 'team2@gmail.com',
                 'email_verified_at' => now(),
                 'password' => bcrypt('12345678'),
