@@ -1,9 +1,9 @@
 <?php
 
 use App\Http\Controllers\SystemRequireMentController;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\DetailSystemRequireMentController;
 
 # PUBLIC
 Route::post('/login', [UserController::class, 'login']);
@@ -15,5 +15,6 @@ Route::middleware(['auth-token'])->group(function () {
     Route::delete('/users/logout', [UserController::class, 'logout']);
 
     Route::resource('system-recuirement', SystemRequireMentController::class);
+    Route::resource('detail-system-requirement', DetailSystemRequireMentController::class);
 });
 
