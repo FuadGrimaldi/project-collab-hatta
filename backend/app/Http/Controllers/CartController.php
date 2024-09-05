@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\DB;
 use App\Helpers\ResponseFormatter;
 use App\Http\Requests\CartCreateRequest;
+use App\Http\Resources\CartResource;
+use PhpParser\Node\Expr\Cast\Object_;
 
 class CartController extends Controller
 {
@@ -47,14 +49,7 @@ class CartController extends Controller
             }
 
             $formattedCart = $cartItems->map(function ($item) {
-                return [
-                    'id' => $item->id,
-                    'product_id' => $item->product_id,
-                    'product_name' => $item->product->name,
-                    'quantity' => $item->quantity,
-                    'price' => $item->price,
-                    'total_price' => $item->quantity * $item->price,
-                ];
+                return new CartResource($item);
             });
 
             return ResponseFormatter::success($formattedCart, 'Cart data retrieved successfully');
@@ -132,6 +127,49 @@ class CartController extends Controller
         } catch (\Exception $e) {
             Log::channel('daily')->error('Error deleting cart items: ' . $e->getMessage());
             return ResponseFormatter::error(null, 'Failed to delete cart items', 500);
+        }
+    }
+
+    /**
+     * Update the quantity of a specific cart item.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $cartId
+     * @return \Illuminate\Http\Response
+     */
+    public function updateMyCart(Request $request, int $cartId)
+    {
+        try {
+            $userId = $request->user->id;
+
+            $validatedData = $request->validate([
+                'quantity' => 'required|integer|min:1',
+            ]);
+
+            $cartItem = Cart::where('id', $cartId)
+                            ->with(['product'])
+                            ->where('user_id', $userId)
+                            ->first();
+
+            if (!$cartItem) {
+                return ResponseFormatter::error(null, 'Cart item not found', 404);
+            }
+
+            // Fetch the associated product to get its price
+            $product = $cartItem->product;
+            if (!$product) {
+                return ResponseFormatter::error(null, 'Associated product not found', 404);
+            }
+
+            // Calculate the new total price based on the updated quantity
+
+            $cartItem->quantity = $validatedData['quantity'];
+            $cartItem->save();
+
+            return ResponseFormatter::success(new CartResource($cartItem), 'Cart item updated successfully');
+        } catch (\Exception $e) {
+            Log::channel('daily')->error('Error updating cart item: ' . $e->getMessage());
+            return ResponseFormatter::error(null, 'Failed to update cart item', 500);
         }
     }
 
