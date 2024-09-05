@@ -86,4 +86,72 @@ class ProductService
             ]);
         }
     }
+    public function updateProduct(array $data, string $id): array
+    {        
+        try {
+            DB::beginTransaction();
+
+            // Update product
+            $product = Product::findOrFail($id);
+            $product->update([
+                'name' => $data['name'] ?? $product->name,
+                'description' => $data['description'] ?? $product->description,
+                'price' => $data['price'] ?? $product->price,
+                'stock' => $data['stock'] ?? $product->stock,
+                'seller_id' => $data['seller_id'] ?? $product->seller_id,
+            ]);
+
+            // Handle thumbnail update
+            if (isset($data['thumbnail']) && $data['thumbnail'] instanceof \Illuminate\Http\UploadedFile) {
+                if ($product->thumbnail) {
+                    Storage::disk('public')->delete($product->thumbnail);
+                }
+                $product->thumbnail = $data['thumbnail']->store('product_images', 'public');
+                $product->save();
+            }
+
+            // Update product detail
+            $productDetail = ProductDetail::updateOrCreate(
+                ['product_id' => $product->id],
+                [
+                    'tag' => $data['tag'] ?? $productDetail->tag ?? null,
+                    'workson' => $data['workson'] ?? $productDetail->workson ?? null,
+                    'release_date' => $data['release_date'] ?? $productDetail->release_date ?? null,
+                    'company_name' => $data['company_name'] ?? $productDetail->company_name ?? null,
+                    'size' => $data['size'] ?? $productDetail->size ?? null,
+                    'language' => $data['language'] ?? $productDetail->language ?? null,
+                ]
+            );
+
+            // Handle gallery images update
+            if (isset($data['images']) && is_array($data['images'])) {
+                foreach ($data['images'] as $image) {
+                    if ($image instanceof \Illuminate\Http\UploadedFile) {
+                        $imagePath = $image->store('product_images', 'public');
+                        Gallery::create([
+                            'product_id' => $product->id,
+                            'image_url' => $imagePath,
+                        ]);
+                    }
+                }
+            }
+
+            DB::commit();
+
+            return [
+                'product' => $product,
+                'product_detail' => $productDetail,
+                'galleries' => $product->galleries
+            ];
+        } catch (\Exception $e) {
+            DB::rollBack();
+            Log::error('Failed to update product: '.$e->getMessage(), [
+                'product_id' => $id,
+                'data' => $data,
+            ]);
+            throw ValidationException::withMessages([
+                'error' => ['Failed to update product: ' . $e->getMessage()],
+            ]);
+        }
+    }    
 }
