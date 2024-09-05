@@ -17,8 +17,12 @@ class DatabaseSeeder extends Seeder
 
         $this->call([
 <<<<<<< HEAD
+<<<<<<< HEAD
             UsersSeeder::class,
 =======
+=======
+            UsersSeeder::class,
+>>>>>>> main
             // UsersSeeder::class,
 >>>>>>> main
             AddressSeeder::class,

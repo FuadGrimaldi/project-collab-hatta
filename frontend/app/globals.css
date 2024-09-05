@@ -31,3 +31,13 @@ body {
     text-wrap: balance;
   }
 }
+
+/* Tambahkan ini ke file CSS global Anda */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}

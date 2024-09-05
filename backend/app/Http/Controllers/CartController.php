@@ -1,0 +1,169 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Models\Cart;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\DB;
+use App\Helpers\ResponseFormatter;
+use App\Http\Requests\CartCreateRequest;
+
+class CartController extends Controller
+{
+    /**
+     * Display a listing of the resource.
+     */
+    public function index()
+    {
+        return 'OK';
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     */
+    public function create()
+    {
+        //
+    }
+    /**
+     * Get cart data for the logged-in user.
+     *
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function getMyCart(Request $request)
+    {
+        try {
+
+            $userId = $request->user->id;
+            
+            $cartItems = Cart::where('user_id', $userId)
+                ->with('product') // Assuming you have a relationship defined in the Cart model
+                ->get();
+
+            if ($cartItems->isEmpty()) {
+                return ResponseFormatter::success([], 'Cart is empty');
+            }
+
+            $formattedCart = $cartItems->map(function ($item) {
+                return [
+                    'id' => $item->id,
+                    'product_id' => $item->product_id,
+                    'product_name' => $item->product->name,
+                    'quantity' => $item->quantity,
+                    'price' => $item->price,
+                    'total_price' => $item->quantity * $item->price,
+                ];
+            });
+
+            return ResponseFormatter::success($formattedCart, 'Cart data retrieved successfully');
+
+        } catch (\Exception $e) {
+            Log::channel('daily')->error('Error retrieving cart data: ' . $e->getMessage());
+            return ResponseFormatter::error(null, 'Failed to retrieve cart data', 500);
+        }
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     */
+    public function store(CartCreateRequest $request)
+    {
+        try {
+            
+            $validatedData = $request->validated();
+
+            // Get product details
+            $product = DB::table('products')->find($validatedData['product_id']);
+            
+            if (!$product) {
+                return ResponseFormatter::error(null, 'Product not found', 404);
+            }
+            
+            // Update the price in the validated data with the current product price
+            $validatedData['price'] = $product->price;
+            $validatedData['user_id'] = $request->user->id;
+
+            // Check if the item already exists in the cart
+            $existingCartItem = Cart::where('user_id', $validatedData['user_id'])
+                ->where('product_id', $validatedData['product_id'])
+                ->first();
+
+            if ($existingCartItem) {
+                // If the item exists, update the quantity
+                $existingCartItem->quantity += $validatedData['quantity'];
+                $existingCartItem->save();
+                
+                return ResponseFormatter::success($existingCartItem, 'Cart item quantity updated successfully');
+            }else{
+
+                $cart = Cart::create($validatedData);
+            }
+
+
+            return ResponseFormatter::success($cart, 'Cart item added successfully');
+
+        } catch (\Exception $e) {
+            Log::channel('daily')->error('Error adding item to cart: ' . $e->getMessage());
+            return ResponseFormatter::error(null, 'Failed to add item to cart', 500);
+        }
+    }
+
+    /**
+     * Delete all items from the user's cart.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function deleteMyCart(Request $request, int $product_id)
+    {
+        try {
+            $userId = $request->user->id;
+
+            // Delete all cart items for the user
+            $deletedCount = Cart::where('user_id', $userId)->where('product_id',$product_id)->delete();
+
+            if ($deletedCount > 0) {
+                return ResponseFormatter::success(null, 'Cart items deleted successfully');
+            } else {
+                return ResponseFormatter::success(null, 'Cart is already empty');
+            }
+        } catch (\Exception $e) {
+            Log::channel('daily')->error('Error deleting cart items: ' . $e->getMessage());
+            return ResponseFormatter::error(null, 'Failed to delete cart items', 500);
+        }
+    }
+
+    /**
+     * Display the specified resource.
+     */
+    public function show(Cart $cart)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     */
+    public function edit(Cart $cart)
+    {
+        //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update(Request $request, Cart $cart)
+    {
+        //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy(Cart $cart)
+    {
+        //
+    }
+}
