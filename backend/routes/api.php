@@ -7,7 +7,7 @@ use App\Http\Controllers\DetailSystemRequireMentController;
 use App\Http\Controllers\ProductControllerDev;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\OrderController;
-
+use App\Http\Controllers\AddressController;
 # PUBLIC
 Route::post('/login', [UserController::class, 'login']);
 Route::post('/users/register', [UserController::class, 'register']); 
@@ -16,6 +16,9 @@ Route::post('/users/register', [UserController::class, 'register']);
 Route::middleware(['auth-token'])->group(function () {
     Route::get('/users/profile', [UserController::class, 'getProfile']);
     Route::delete('/users/logout', [UserController::class, 'logout']);
+
+    Route::resource('address', AddressController::class);
+    Route::get('users/address/{userId}', [AddressController::class, 'getAddressByUser']);
 
     Route::resource('system-recuirement', SystemRequireMentController::class);
     Route::resource('detail-system-requirement', DetailSystemRequireMentController::class);
