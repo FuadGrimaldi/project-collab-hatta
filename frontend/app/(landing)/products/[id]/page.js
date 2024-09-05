@@ -12,6 +12,35 @@ import {
 import Navbar from "../../../../components/landingpage/Navbar";
 import Footer from "../../../../components/landingpage/Footer";
 import { FaStar, FaStarHalfAlt, FaRegStar } from "react-icons/fa";
+import BestDeals from "../../../../components/landingpage/homepage/BestDeals";
+import BestDealsList from "../../../../components/landingpage/homepage/BestDealsList";
+
+const vouchers = [
+  {
+    id: 1,
+    image: "/images/slider2.jpg",
+    title: "Destroy All Humans Game - Mobile Game",
+    price: 150000,
+    discount: 2,
+    wishlist: false,
+  },
+  {
+    id: 2,
+    image: "/images/slider1.svg",
+    title: "Voucher Game B",
+    price: 460000,
+    discount: 25,
+    wishlist: true,
+  },
+  {
+    id: 3,
+    image: "/images/slider3.jpg",
+    title: "Voucher Game C",
+    price: 320000,
+    discount: 25,
+    wishlist: false,
+  },
+];
 
 const product = {
   id: 1,
@@ -82,6 +111,11 @@ export default function ProductDetail() {
   const [isMobile, setIsMobile] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(true);
   const [activeOS, setActiveOS] = useState("windows");
+  const [isInWishlist, setIsInWishlist] = useState(false);
+
+  const toggleWishlist = () => {
+    setIsInWishlist(!isInWishlist);
+  };
 
   const toggleDescription = () => setShowFullDescription(!showFullDescription);
 
@@ -183,8 +217,16 @@ export default function ProductDetail() {
               <button className="w-full bg-green-500 hover:bg-green-600 transition-colors duration-300 text-white px-4 py-2 flex items-center justify-center">
                 <FaShoppingCart className="mr-2" /> Add to Cart
               </button>
-              <button className="w-full border border-gray-300 px-4 py-2 flex items-center justify-center">
-                <FaRegHeart className="mr-2" /> Add to Wishlist
+              <button
+                onClick={toggleWishlist}
+                className="w-full border border-gray-300 px-4 py-2 flex items-center justify-center hover:bg-gray-900 transition-colors duration-300"
+              >
+                {isInWishlist ? (
+                  <FaHeart className="mr-2 text-red-500" />
+                ) : (
+                  <FaRegHeart className="mr-2" />
+                )}
+                {isInWishlist ? "Remove from Wishlist" : "Add to Wishlist"}
               </button>
             </div>
           </div>
@@ -354,6 +396,31 @@ export default function ProductDetail() {
               ))}
             </div>
           </div>
+        </div>
+
+        <div className="mt-16">
+          <div className="flex flex-col relative mb-4">
+            <div className="absolute bottom-0 left-0 right-0 h-px bg-gray-200"></div>
+            <h2 className="text-xl lg:text-2xl font-bold mb-3">
+              You may like these products
+            </h2>
+            <span className="absolute bottom-0 left-0 right-0 h-[2px] w-44 md:w-80 bg-[#04536C]"></span>
+          </div>
+          <div className="w-full overflow-x-auto scrollbar-hide mt-8">
+            <div className="flex gap-12">
+              {[...vouchers, ...vouchers, ...vouchers].map((voucher, index) => (
+                <BestDeals
+                  className={"min-w-64 md:min-w-96"}
+                  key={`${voucher.id}-${index}`}
+                  image={voucher.image}
+                  title={voucher.title}
+                  price={voucher.price}
+                  discount={voucher.discount}
+                  wishlist={voucher.wishlist}
+                />
+              ))}
+            </div>
+          </div>{" "}
         </div>
       </div>
       <Footer />
