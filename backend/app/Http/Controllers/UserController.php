@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Log;
 use App\Helpers\ResponseFormatter;
 use App\Http\Requests\UserRegisterRequest;
 use App\Http\Resources\UserResource;
+use App\Http\Resources\UserProfileResource;
 use App\Http\Services\UserService;
 use App\Http\Services\ApiTokenService;
 use App\Http\Requests\UserLoginRequest;
@@ -126,7 +127,27 @@ class UserController extends Controller
 
             if (!$user)  return ResponseFormatter::error(null, 'User not found', 404);
 
-            return ResponseFormatter::success(new UserResource($user), 'User profile retrieved successfully');
+            return ResponseFormatter::success(new UserProfileResource($user), 'User profile retrieved successfully');
+
+        } catch (\Exception $e) {
+            // Log the error
+            Log::channel('daily')->error($e->getMessage());
+            return ResponseFormatter::error(null, 'An error occurred: ' . $e->getMessage(), 500);
+        }
+    }
+    public function updateProfile(Request $request)
+    {
+        try {
+            // Get the authenticated user
+            $user = $request->user;
+
+            if (!$user)  return ResponseFormatter::error(null, 'User not found', 404);
+
+            $data = $request->all();
+
+            $user = $this->userService->update($user, $data);
+
+            return ResponseFormatter::success(new UserProfileResource($user), 'User profile updated successfully');
 
         } catch (\Exception $e) {
             // Log the error
