@@ -25,15 +25,13 @@ class UserRegisterRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'firstname' => 'required|string|max:255',
-            'lastname' => 'required|string|max:255',
-            'role' => 'required|string|in:buyer,seller',
+            'firstname' => 'nullable|string|max:255',
+            'lastname' => 'nullable|string|max:255',
+            'role' => 'string|in:buyer,seller',
             'img_profile' => 'nullable|string',
             'phone_number' => 'nullable|string',
             'birthdate' => 'nullable|string',
             'gender' => 'nullable|string|in:male,female,other',
-            'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|min:8|confirmed',
         ];
     }
 

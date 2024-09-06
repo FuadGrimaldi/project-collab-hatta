@@ -15,6 +15,7 @@ Route::post('/users/register', [UserController::class, 'register']);
 # PRIVATE
 Route::middleware(['auth-token'])->group(function () {
     Route::get('/users/profile', [UserController::class, 'getProfile']);
+    Route::put('/users/edit-profile', [UserController::class, 'updateProfile']);
     Route::delete('/users/logout', [UserController::class, 'logout']);
 
     Route::resource('address', AddressController::class);
