@@ -12,7 +12,7 @@ export default function CartItem({
     <div className="relative flex flex-row gap-4 lg:gap-8 py-8 px-0 lg:px-12 first:-mt-[0.2px]">
       <div className="absolute inset-x-4 lg:inset-x-12 top-0 h-[0.2px] bg-gray-300"></div>
 
-      <div className="flex items-center justify-center w-auto">
+      <div className="flex items-center justify-center">
         <input
           type="checkbox"
           checked={isSelected}
@@ -28,11 +28,11 @@ export default function CartItem({
         className="object-cover w-24 h-32 lg:w-28 lg:h-40"
       />
 
-      <div className="flex w-full flex-col lg:flex-row lg:gap-12">
-        <h3 className="text-xs md:text-base lg:text-lg font-semibold w-1/2 line-clamp-3 lg:line-clamp-2">
+      <div className="flex w-full flex-col lg:flex-row gap-0 lg:gap-6">
+        <h3 className="text-xs md:text-base lg:text-lg font-semibold w-full max-w-[300px] line-clamp-3 lg:line-clamp-2">
           {item.title}
         </h3>
-        <div className="flex flex-col-reverse lg:flex-row items-start gap-0 lg:gap-12 w-full lg:w-auto">
+        <div className="flex flex-col-reverse lg:flex-row items-start mt-2 md:mt-0 gap-0 lg:gap-16 w-full max-w-[400px]">
           <div className="flex w-auto h-6 lg:h-8 mt-2 lg:mt-0 gap-0 text-sm font-light">
             <button
               onClick={() => updateQuantity(item.id, item.quantity - 1)}
@@ -52,7 +52,7 @@ export default function CartItem({
               <FaPlus />
             </button>
           </div>
-          <div className=" w-auto">
+          <div className="w-full">
             <span className="font-light text-[10px] md:text-xs lg:text-sm">
               Price
             </span>
