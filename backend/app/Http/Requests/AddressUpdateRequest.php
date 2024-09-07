@@ -7,7 +7,7 @@ use Illuminate\Validation\ValidationException;
 use Illuminate\Contracts\Validation\Validator;
 use App\Helpers\ResponseFormatter;
 
-class UserRegisterRequest extends FormRequest
+class AddressUpdateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,13 +25,9 @@ class UserRegisterRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'firstname' => 'nullable|string|max:255',
-            'lastname' => 'nullable|string|max:255',
-            'role' => 'string|in:buyer,seller',
-            'img_profile' => 'nullable|string',
-            'phone_number' => 'nullable|string',
-            'birthdate' => 'nullable|string',
-            'gender' => 'nullable|string|in:male,female,other',
+            'user_id' => 'required|exists:users,id',
+            'address' => 'required|string',
+            'phone_number' => 'required|string',    
         ];
     }
 
