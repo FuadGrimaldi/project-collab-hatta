@@ -13,14 +13,17 @@ export default function CheckoutPageContent({ items, totalItems, totalPrice }) {
         <div className="bg-black p-6 shadow-md border border-white">
           <h2 className="text-xl font-semibold">Checkout</h2>
         </div>
-        <div className="bg-black px-6 pb-6 p-0 lg:p-8 shadow-md mb-6 mt-8 border border-white">
+        <div className="bg-black px-6 pb-6 p-0 lg:p-8 shadow-md mt-8 border border-white">
+          <h2 className="block lg:hidden text-xl font-semibold mt-8 border-b pb-4">
+            Produk
+          </h2>
           <CheckoutItemTitle />
           {items.map((item) => (
             <CheckoutItem key={item.id} item={item} />
           ))}
-          <div className="mt-4 pt-4">
-            <div className="flex justify-between items-center">
-              <span className="font-semibold">
+          <div className="mt-6">
+            <div className="flex flex-col lg:flex-row gap-0 lg:gap-4 justify-end items-end lg:items-center">
+              <span className="text-sm">
                 Total Pesanan ({totalItems} produk)
               </span>
               <span className="font-semibold text-[#04536C]">
@@ -30,8 +33,8 @@ export default function CheckoutPageContent({ items, totalItems, totalPrice }) {
           </div>
         </div>
 
-        <div className="bg-black p-6 lg:p-8 shadow-md border border-white">
-          <h2 className="text-xl font-semibold mb-4">Pilih Pembayaran</h2>
+        <div className="bg-black mt-10 p-6 lg:p-8 shadow-md border border-white">
+          <h2 className="text-xl font-semibold mb-4">Choose Payment</h2>
           <PaymentOptions
             selectedMethod={selectedMethod}
             setSelectedMethod={setSelectedMethod}
@@ -39,7 +42,7 @@ export default function CheckoutPageContent({ items, totalItems, totalPrice }) {
         </div>
       </div>
 
-      <div className="w-full lg:w-1/3">
+      <div className="w-full lg:w-1/3 mt-2 lg:mt-0">
         <OrderSummary subtotal={totalPrice} selectedMethod={selectedMethod} />
       </div>
     </div>
@@ -49,7 +52,7 @@ export default function CheckoutPageContent({ items, totalItems, totalPrice }) {
 function CheckoutItemTitle() {
   return (
     <div className="hidden lg:flex items-start gap-16 py-4 border-b border-gray-200 last:border-b-0">
-      <h2 className="text-xl font-semibold mb-4">Produk</h2>
+      <h2 className="text-xl font-semibold mb-4 ">Produk</h2>
 
       <div className="flex gap-4 justify-between w-full">
         <h3 className="text-gray-400 w-full max-w-[300px] font-semibold text-sm lg:text-base">
@@ -171,7 +174,6 @@ function OrderSummary({ subtotal, selectedMethod }) {
 
   return (
     <div className="bg-black p-6 shadow-md border border-white">
-      <h2 className="text-xl font-semibold mb-4">Ringkasan Pesanan</h2>
       <div className="space-y-2 mb-4">
         <div className="flex justify-between">
           <span>Subtotal</span>
@@ -188,7 +190,7 @@ function OrderSummary({ subtotal, selectedMethod }) {
       </div>
 
       <button
-        className={`w-full py-3 rounded-lg mt-6 font-semibold transition-colors ${
+        className={`w-full py-3 mt-6 font-semibold transition-colors ${
           isPaymentSelected
             ? "bg-green-600 hover:bg-green-700 text-white"
             : "bg-gray-400 text-gray-700 cursor-not-allowed"

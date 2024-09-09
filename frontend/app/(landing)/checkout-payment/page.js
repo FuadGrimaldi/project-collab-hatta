@@ -4,6 +4,7 @@ import CheckoutPageContent from "../../../components/landingpage/checkout/Checko
 import Navbar from "../../../components/landingpage/Navbar";
 import Footer from "../../../components/landingpage/Footer";
 import { useState } from "react";
+import CheckoutPayment from "../../../components/landingpage/checkout/CheckoutPayment";
 
 // Data dummy untuk items
 const dummyItems = [
@@ -47,11 +48,11 @@ export default function CheckoutPage() {
   return (
     <>
       <Navbar isLoggedIn={isLoggedIn} userName={"Firyal"} />
-      <div className="mx-auto px-8 lg:px-16 pt-24">
-        <CheckoutPageContent
-          items={dummyItems}
-          totalItems={totalItems}
-          totalPrice={totalPrice}
+      <div className="px-8 lg:px-24 xl:px-48 pt-28">
+        <CheckoutPayment
+          bankName="BCA"
+          accountNumber="896 0821 1505 4013"
+          totalAmount={1000000}
         />
       </div>
       <Footer />
