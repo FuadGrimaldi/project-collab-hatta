@@ -72,7 +72,7 @@ export default function MyOrder() {
                   alt={order.title}
                   width={74}
                   height={15}
-                  className="object-cover w-24 h-28"
+                  className="object-cover w-20 h-28"
                 />
                 <div className="flex flex-col">
                   <div className="">
