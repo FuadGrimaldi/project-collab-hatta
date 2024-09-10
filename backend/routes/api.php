@@ -8,6 +8,8 @@ use App\Http\Controllers\ProductControllerDev;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\AddressController;
+use App\Http\Controllers\WishlistController;
+
 # PUBLIC
 Route::post('/login', [UserController::class, 'login']);
 Route::post('/users/register', [UserController::class, 'register']); 
@@ -35,6 +37,12 @@ Route::middleware(['auth-token'])->group(function () {
     Route::post('orders/create', [OrderController::class, 'store']);
     Route::get('myorders', [OrderController::class, 'myOrders']);
     Route::put('orders/{orderId}/update-payment-status', [OrderController::class, 'updatePaymentStatus']);
+
+    // Wishlist routes
+    Route::post('wishlist/add', [WishlistController::class, 'add']);
+    Route::get('wishlist', [WishlistController::class, 'myWishlist']);
+    Route::delete('wishlist/{id}', [WishlistController::class, 'removeMyWishlist']);
+    Route::post('wishlist/{id}/move-to-cart', [WishlistController::class, 'moveToCart']);
     
 });
 

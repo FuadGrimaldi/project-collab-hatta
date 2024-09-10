@@ -9,31 +9,10 @@ use Illuminate\Support\Facades\DB;
 use App\Helpers\ResponseFormatter;
 use App\Http\Requests\CartCreateRequest;
 use App\Http\Resources\CartResource;
-use PhpParser\Node\Expr\Cast\Object_;
 
 class CartController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
-    {
-        return 'OK';
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-    /**
-     * Get cart data for the logged-in user.
-     *
-     * @param Request $request
-     * @return \Illuminate\Http\JsonResponse
-     */
+   
     public function getMyCart(Request $request)
     {
         try {
@@ -47,7 +26,6 @@ class CartController extends Controller
             if ($cartItems->isEmpty()) {
                 return ResponseFormatter::success([], 'Cart is empty');
             }
-
             $formattedCart = $cartItems->map(function ($item) {
                 return new CartResource($item);
             });
@@ -173,35 +151,4 @@ class CartController extends Controller
         }
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Cart $cart)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Cart $cart)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Cart $cart)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Cart $cart)
-    {
-        //
-    }
 }
