@@ -13,7 +13,7 @@ export default function WishlistItem({ item, removeItem }) {
         alt={item.title}
         width={112}
         height={15}
-        className="object-cover w-24 h-32 lg:w-28 lg:h-40"
+        className="object-cover w-24 h-32 lg:w-28 lg:h-36"
       />
 
       <div className="flex w-full flex-col lg:flex-row gap-0 lg:gap-6">

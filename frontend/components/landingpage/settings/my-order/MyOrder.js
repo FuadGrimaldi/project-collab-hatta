@@ -59,42 +59,42 @@ export default function MyOrder() {
         </select>
       </div>
 
-      <div className="space-y-4">
+      <div className="space-y-8">
         {sampleOrders.map((order) => (
           <div
             key={order.id}
             className="flex flex-col gap-4 lg:gap-8 py-8 px-4 lg:px-8 border border-white"
           >
-            <div className="flex flex-col md:flex-row gap-4 md:gap-24 lg:gap-48">
-              <div className="flex gap-4 md:gap-8">
+            <div className="flex flex-col md:flex-row gap-4 md:gap-16">
+              <div className="flex gap-4 md:gap-8 w-full lg:w-3/5">
                 <Image
                   src={order.image}
                   alt={order.title}
                   width={74}
                   height={15}
-                  className="object-cover w-24 h-28"
+                  className="object-cover w-20 h-28"
                 />
-                <div className="flex flex-col w-full max-w-[400px]">
-                  <div className="w-full">
-                    <span className="text-[10px] md:text-xs">order Number</span>
-                    <p className=" text-xs md:text-base">{order.orderNumber}</p>
+                <div className="flex flex-col">
+                  <div className="">
+                    <span className="text-xs md:text-sm">Order Number</span>
+                    <p className="text-base">{order.orderNumber}</p>
                   </div>
-                  <div className="flex w-full gap-2">
-                    <span className="text-xs ">Booked Date</span>
-                    <p className=" text-xs">{order.bookedDate}</p>
+                  <div className="flex gap-2 w-full">
+                    <span className="text-sm">Booked Date</span>
+                    <p className="text-sm">{order.bookedDate}</p>
                   </div>
                 </div>
               </div>
 
-              <div className="flex w-full flex-col lg:flex-row gap-0 lg:gap-6">
-                <div className="flex flex-col w-full">
-                  <h3 className="text-xs md:text-base font-semibold w-full max-w-[400px] line-clamp-3 lg:line-clamp-2">
+              <div className="flex w-full flex-col lg:flex-row gap-0 lg:gap-6 ">
+                <div className="flex flex-col w-full lg:w-3/5">
+                  <h3 className="text-sm md:text-base font-semibold w-full max-w-[400px] line-clamp-3 lg:line-clamp-2">
                     {order.title}
                   </h3>
-                  <p className="text-xs">x {order.totalItem}</p>
+                  <p className="text-sm">x {order.totalItem}</p>
                 </div>
-                <div className="flex flex-col mt-2 md:mt-0 w-full text-end">
-                  <span className="text-xs line-through">
+                <div className="flex flex-col mt-2 md:mt-0 w-full lg:w-2/5 text-end">
+                  <span className="text-sm line-through">
                     Rp {order.price.toLocaleString()}
                   </span>
                   <p className="text-base">
@@ -110,12 +110,12 @@ export default function MyOrder() {
                   Detail Ratings
                 </button>
                 <button className="w-full md:w-44 px-4 py-2 text-sm md:text-base border-white border text-white hover:bg-white hover:text-black transition-colors">
-                  Delete Order
+                  Detail Order
                 </button>
                 <CartButton className="w-full md:w-44 px-4 py-2 hidden md:block" />
               </div>
               <div className="flex flex-col w-full items-end justify-end ">
-                <p className="text-xs">Order Total</p>
+                <p className="text-sm">Order Total</p>
                 <p className="text-base font-semibold text-[#04536C]">
                   Rp {(order.finalPrice * order.totalItem).toLocaleString()}
                 </p>
