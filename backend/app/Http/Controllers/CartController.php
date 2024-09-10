@@ -9,7 +9,6 @@ use Illuminate\Support\Facades\DB;
 use App\Helpers\ResponseFormatter;
 use App\Http\Requests\CartCreateRequest;
 use App\Http\Resources\CartResource;
-use PhpParser\Node\Expr\Cast\Object_;
 
 class CartController extends Controller
 {
@@ -47,7 +46,6 @@ class CartController extends Controller
             if ($cartItems->isEmpty()) {
                 return ResponseFormatter::success([], 'Cart is empty');
             }
-
             $formattedCart = $cartItems->map(function ($item) {
                 return new CartResource($item);
             });
