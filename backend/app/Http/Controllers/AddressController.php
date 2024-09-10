@@ -14,10 +14,10 @@ use App\Models\User;
 
 class AddressController extends Controller
 {
-    public function getAddressByUser(int $userId)
+    public function getAddressByUser(Request $request)
     {
         try {
-            $user = User::findOrFail($userId);
+            $user = $request->user;
             if (!$user) {
                 return ResponseFormatter::error(null, 'User not found', 404);
             }
