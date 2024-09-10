@@ -1,6 +1,6 @@
 import CartItem from "./CartItem";
 
-export default function CartItemList({
+export default function CartList({
   items,
   selectedItems,
   updateQuantity,
