@@ -1,4 +1,7 @@
+"use client";
+
 import WishlistCard from "./WishlistCard";
+import { useState } from "react";
 
 const initialWishItems = [
   {
@@ -32,9 +35,19 @@ const initialWishItems = [
 ];
 
 export default function Wishlist() {
+  const [wishItems, setWishItems] = useState(initialWishItems);
+
+  const removeItem = (id) => {
+    setWishItems((prevItems) => prevItems.filter((item) => item.id !== id));
+  };
+
   return (
     <div>
-      <WishlistCard items={initialWishItems} />
+      {wishItems.length > 0 ? (
+        <WishlistCard items={wishItems} removeItem={removeItem} />
+      ) : (
+        <p>Your wishlist is empty.</p>
+      )}
     </div>
   );
 }
