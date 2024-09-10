@@ -66,7 +66,7 @@ export default function ChangePassword() {
   );
 
   return (
-    <div className="w-full mb-6">
+    <div className="w-full pb-10 p-6 border border-white">
       <div className="flex items-center mx-0 lg:mx-6 border-b border-[#808080]">
         <h1 className="text-2xl font-bold mb-6 mt-6">Change Password</h1>
       </div>
@@ -90,7 +90,7 @@ export default function ChangePassword() {
           <div className="flex">
             <button
               type="submit"
-              className="mt-8 px-4 py-2 w-40 bg-[#04536C] text-white hover:bg-[#01465b] transition-colors"
+              className="mt-4 px-4 py-2 w-40 bg-[#04536C] text-white hover:bg-[#01465b] transition-colors"
             >
               Save Changes
             </button>

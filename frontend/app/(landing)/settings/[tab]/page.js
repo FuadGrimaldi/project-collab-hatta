@@ -45,7 +45,7 @@ export default function SettingsPage() {
         <div>
           <Sidebar activeTab={tab} />
         </div>
-        <div className="w-full bg-black text-white p-6 shadow-md border border-white">
+        <div className="w-full bg-black text-white shadow-md ">
           {renderContent()}
         </div>
       </div>

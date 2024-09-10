@@ -46,13 +46,13 @@ export default function Sidebar({ activeTab }) {
                 onClick={() => handleItemClick(item.id)}
                 className={`w-full flex justify-between items-center p-2 rounded ${
                   activeTab === item.id
-                    ? "text-blue-400"
+                    ? "text-[#04536C]"
                     : "text-white hover:bg-gray-800"
                 }`}
               >
                 <span>{item.label}</span>
                 <FaChevronRight
-                  className={activeTab === item.id ? "text-blue-400" : ""}
+                  className={activeTab === item.id ? "text-[#04536C]" : ""}
                 />
               </button>
             </li>

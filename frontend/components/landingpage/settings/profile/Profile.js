@@ -26,7 +26,7 @@ export default function Profile() {
   };
 
   return (
-    <div className="w-full mb-6">
+    <div className="w-full pb-8 p-6 border border-white">
       <div className="flex items-center mx-0 lg:mx-6 border-b border-[#808080]">
         <h1 className="text-2xl font-bold mb-6 mt-6">Profile</h1>
       </div>

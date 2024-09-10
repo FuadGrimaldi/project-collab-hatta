@@ -6,7 +6,7 @@ export default function Address() {
   const router = useRouter();
 
   return (
-    <div className="w-full mb-6">
+    <div className="w-full pb-10 p-6 border border-white">
       <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center mx-0 lg:mx-6 pb-2 border-b border-[#808080]">
         <h1 className="text-2xl font-bold mb-3 lg:mb-6 mt-6">My Address</h1>
         <button
