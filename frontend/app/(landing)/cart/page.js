@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import CartItemList from "../../../components/landingpage/cart/CartList";
+import CartList from "../../../components/landingpage/cart/CartList";
 import CartSummary from "../../../components/landingpage/cart/CartSummary";
 import Navbar from "../../../components/landingpage/Navbar";
 import Footer from "../../../components/landingpage/Footer";
@@ -86,7 +86,7 @@ export default function CartPage() {
       <div className="mx-auto px-8 lg:px-16 pt-32">
         <div className="flex flex-col lg:flex-row gap-8">
           <div className="w-full lg:w-2/3">
-            <CartItemList
+            <CartList
               items={cartItems}
               selectedItems={selectedItems}
               updateQuantity={updateQuantity}
