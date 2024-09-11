@@ -10,12 +10,14 @@ import {
   FaArrowLeft,
 } from "react-icons/fa";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 export default function Login() {
   const [showPassword, setShowPassword] = useState(false);
+  const router = useRouter();
 
   return (
-    <section className="bg-black min-h-screen flex">
+    <section className="bg-primary-black min-h-screen flex">
       <div className="w-full md:w-1/2 flex items-center justify-center p-4">
         <div className="w-full max-w-lg mx-5">
           <div className="fixed top-12 flex items-center mb-20">
@@ -35,7 +37,7 @@ export default function Login() {
           <p className="text-xs md:text-sm font-light text-gray-300 mb-6">
             Lorem ipsum dolor sit amet consectetur adipisicing elit.
           </p>
-          <form action="#">
+          <form action="/">
             <input
               type="email"
               name="email"
@@ -70,8 +72,7 @@ export default function Login() {
               type="submit"
               className="w-full mt-7 text-white bg-primary-blue hover:bg-primary-blue/90 focus:ring-4 focus:outline-none focus:ring-primary-blue/50 font-medium text-xs md:text-sm px-5 py-2.5 text-center"
               onClick={() => {
-                setIsLoggedIn(true);
-                Router.push("/");
+                router.push("/");
               }}
             >
               Login
@@ -92,7 +93,10 @@ export default function Login() {
               </label>
             </div>
             <div className="text-sm">
-              <a href="#" className="font-medium text-white hover:underline">
+              <a
+                href="/forgot-password"
+                className="font-medium text-white hover:underline"
+              >
                 Forgot Password?
               </a>
             </div>
@@ -108,14 +112,14 @@ export default function Login() {
             <div className="mt-7 space-y-3">
               <button
                 type="button"
-                className="w-full text-white bg-black hover:bg-[#EB4335] border border-[#EB4335] font-medium text-xs md:text-sm px-5 py-2.5 text-center inline-flex items-center justify-center"
+                className="w-full text-white bg-primary-black hover:bg-[#EB4335] border border-[#EB4335] font-medium text-xs md:text-sm px-5 py-2.5 text-center inline-flex items-center justify-center"
               >
                 <FaGoogle className="mr-2 " />
                 LOGIN WITH GOOGLE
               </button>
               <button
                 type="button"
-                className="w-full text-white bg-black border border-[#3b5998] hover:bg-[#3b5998]/90 focus:ring-4 focus:outline-none focus:ring-[#3b5998]/50 font-medium text-xs md:text-sm px-5 py-2.5 text-center inline-flex items-center justify-center"
+                className="w-full text-white bg-primary-black border border-[#3b5998] hover:bg-[#3b5998]/90 focus:ring-4 focus:outline-none focus:ring-[#3b5998]/50 font-medium text-xs md:text-sm px-5 py-2.5 text-center inline-flex items-center justify-center"
               >
                 <FaFacebook className="mr-2" />
                 LOGIN WITH FACEBOOK

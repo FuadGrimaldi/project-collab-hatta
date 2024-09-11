@@ -6,7 +6,7 @@ import Image from "next/image";
 
 export default function ForgotPassword() {
   return (
-    <section className="bg-black min-h-screen flex">
+    <section className="bg-primary-black min-h-screen flex">
       <div className="w-full md:w-1/2 flex items-center justify-center p-4">
         <div className="w-full max-w-lg mx-5">
           <div className="fixed top-12 flex items-center mb-20">
