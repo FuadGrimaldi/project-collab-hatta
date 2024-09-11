@@ -1,8 +1,6 @@
 "use client";
 
-import { useState } from "react";
 import Image from "next/image";
-import CartButton from "../../button/CartButton";
 
 const sampleOrders = [
   {
@@ -25,20 +23,19 @@ const sampleOrders = [
     bookedDate: "2024-07-14",
     totalItem: 2,
   },
-  // Add more sample orders as needed
 ];
 
 export default function MyOrder() {
   return (
     <div className="w-full mb-6">
-      <div className="flex items-center p-6 border border-white">
+      <div className="bg-secondary-black flex items-center p-6 border border-white">
         <h1 className="text-2xl font-bold">My Digital Item</h1>
       </div>
       <div className="space-y-8 mt-8">
         {sampleOrders.map((order) => (
           <div
             key={order.id}
-            className="flex flex-col gap-4 lg:gap-8 py-8 px-4 lg:px-8 border border-white"
+            className="bg-secondary-black flex flex-col gap-4 lg:gap-8 py-8 px-4 lg:px-8 border border-white"
           >
             <div className="flex flex-col md:flex-row gap-4 md:gap-16">
               <div className="flex gap-4 md:gap-8 w-full lg:w-3/5">
@@ -84,13 +81,13 @@ export default function MyOrder() {
                 <button className="w-full md:w-44 px-4 py-2 text-sm md:text-base border-white border text-white hover:bg-white hover:text-black transition-colors">
                   Get Product Key
                 </button>
-                <button className="w-full md:w-44 px-4 py-2 text-sm md:text-base bg-[#04536C] text-white hover:bg-[#01465b] transition-colors">
+                <button className="w-full md:w-44 px-4 py-2 text-sm md:text-base bg-primary-blue text-white hover:bg-secondary-blue transition-colors">
                   Shop Again
                 </button>
               </div>
               <div className="flex flex-col w-full items-end justify-end ">
                 <p className="text-sm">Order Total</p>
-                <p className="text-base font-semibold text-[#04536C]">
+                <p className="text-base font-semibold text-primary-blue">
                   Rp {(order.finalPrice * order.totalItem).toLocaleString()}
                 </p>
               </div>

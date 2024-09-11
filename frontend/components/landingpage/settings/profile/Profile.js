@@ -26,8 +26,8 @@ export default function Profile() {
   };
 
   return (
-    <div className="w-full pb-8 p-6 border border-white">
-      <div className="flex items-center mx-0 lg:mx-6 border-b border-[#808080]">
+    <div className="w-full pb-8 p-6 border border-white bg-secondary-black">
+      <div className="flex items-center mx-0 lg:mx-6 border-b border-primary-gray">
         <h1 className="text-2xl font-bold mb-6 mt-6">Profile</h1>
       </div>
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-8 mx-0 lg:mx-6 ">

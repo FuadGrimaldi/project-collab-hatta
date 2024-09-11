@@ -34,7 +34,7 @@ export default function FilterProduct() {
       <div className="mb-6">
         <h3 className="font-semibold mt-8">Price</h3>
         <div className="w-full flex border border-white mt-4">
-          <span className="bg-black text-white px-2 py-2 rounded-l flex items-center justify-center">
+          <span className="bg-secondary-black text-white px-2 py-2 rounded-l flex items-center justify-center">
             IDR
           </span>
           <input
@@ -48,7 +48,7 @@ export default function FilterProduct() {
           />
         </div>
         <div className="w-full flex border border-white mt-4">
-          <span className="bg-black  text-white px-2 py-2 rounded-l flex items-center justify-center">
+          <span className="bg-secondary-black  text-white px-2 py-2 rounded-l flex items-center justify-center">
             IDR
           </span>
           <input
@@ -73,13 +73,13 @@ export default function FilterProduct() {
               <label className="flex items-center">
                 <input
                   type="checkbox"
-                  className="mr-2 appearance-none h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-[#04536C] checked:border-[#04536C] focus:outline-none transition duration-200 align-top bg-no-repeat bg-center bg-contain float-left cursor-pointer"
+                  className="mr-2 appearance-none h-4 w-4 border border-secondary-gray rounded-sm bg-white checked:bg-primary-blue checked:border-secondary-blue focus:outline-none transition duration-200 align-top bg-no-repeat bg-center bg-contain float-left cursor-pointer"
                   checked={selectedFilters[category]?.[item] || false}
                   onChange={() => handleFilterChange(category, item)}
                 />
                 <span className="ml-2">{item}</span>
               </label>
-              <span className="text-gray-500">0</span>
+              <span className="text-primary-gray">0</span>
             </div>
           ))}
         </div>

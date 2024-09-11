@@ -29,8 +29,8 @@ const initialNotificationItems = [
 
 export default function Notification() {
   return (
-    <div className="w-full pb-10 p-6 border border-white">
-      <div className="flex items-center mx-0 lg:mx-6 border-b border-[#808080]">
+    <div className="bg-secondary-black w-full pb-10 p-6 border border-white">
+      <div className="flex items-center mx-0 lg:mx-6 border-b border-secondary-gray">
         <h1 className="text-2xl font-bold mb-3 lg:mb-6 mt-6">Notification</h1>
       </div>
       {initialNotificationItems.map((item) => (

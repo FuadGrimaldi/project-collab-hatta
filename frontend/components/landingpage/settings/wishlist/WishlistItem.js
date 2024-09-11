@@ -1,12 +1,11 @@
-import { Button } from "flowbite-react";
 import Image from "next/image";
-import { FaPlus, FaMinus, FaTimes } from "react-icons/fa";
+import { FaTimes } from "react-icons/fa";
 import CartButton2 from "../../button/CartButton2";
 
 export default function WishlistItem({ item, removeItem }) {
   return (
     <div className="relative flex flex-row gap-4 lg:gap-8 py-8 px-0 lg:px-4 first:-mt-[0.2px]">
-      <div className="absolute inset-x-4 top-0 h-[0.2px] bg-gray-300"></div>
+      <div className="absolute inset-x-4 top-0 h-[0.2px] bg-secondary-gray"></div>
 
       <Image
         src={item.coverImage}
@@ -49,7 +48,7 @@ export default function WishlistItem({ item, removeItem }) {
         <div className="flex justify-end w-40 items-start">
           <button
             onClick={() => removeItem(item.id)}
-            className="hidden lg:block ml-auto w-12 text-xl text-gray-500 hover:text-red-500 transition-colors mt-2 lg:mt-0"
+            className="hidden lg:block ml-auto w-12 text-xl text-primary-white hover:text-primary-red transition-colors mt-2 lg:mt-0"
           >
             <FaTimes />
           </button>

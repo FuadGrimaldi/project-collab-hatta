@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export default function Footer() {
   return (
-    <footer className="bg-[#262526] text-white  pt-12 p-6 md:p-12 mt-32">
+    <footer className="bg-[#262526] text-white pt-12 p-6 mt-32">
       <div className="container mx-auto px-4">
         <div className="flex md:flex-row flex-col gap-8">
           {/* Logo dan Teks */}
@@ -86,7 +86,7 @@ export default function Footer() {
         </div>
 
         {/* Copyright */}
-        <div className="mt-12 pt-8 border-t border-gray-800 text-center text-sm text-gray-400">
+        <div className="mt-12 pt-8 border-t border-primary-gray text-center text-sm text-gray-400">
           Copyright © 2020 Ecommerce Game All Rights Reserved.
         </div>
       </div>

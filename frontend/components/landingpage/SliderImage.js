@@ -56,7 +56,7 @@ export default function SliderImage() {
                 alt={voucher.title}
               />
               <div className="absolute top-5 -right-5 md:top-20 md:right-20 w-60 md:w-80 text-white p-4 z-10">
-                <span className="text-[10px] md:text-sm bg-yellow-500 px-2 py-1">
+                <span className="text-[10px] md:text-sm bg-primary-yellow px-2 py-1">
                   NEW
                 </span>
                 <h3 className="text-md md:text-xl font-bold mt-3">
@@ -67,7 +67,7 @@ export default function SliderImage() {
                   Quisquam, quos. Lorem ipsum dolor sit amet consectetur
                 </p>
 
-                <button className="bg-green-500 hover:bg-green-600 transition-colors duration-300 text-white w-24 text-[10px] md:text-base md:w-40 px-2 md:px-4 py-1 md:py-2 mt-4 ">
+                <button className="bg-primary-green hover:bg-secondary-green transition-colors duration-300 text-white w-24 text-[10px] md:text-base md:w-40 px-2 md:px-4 py-1 md:py-2 mt-4 ">
                   Buy Now
                 </button>
               </div>
@@ -81,7 +81,7 @@ export default function SliderImage() {
             key={index}
             onClick={() => changeImage(index)}
             className={`w-10 h-1 rounded transition-colors duration-300 ${
-              index === activeIndex ? "bg-gray-800" : "bg-gray-300"
+              index === activeIndex ? "bg-primary-blue" : "bg-gray-300"
             }`}
             aria-label={`Lihat voucher ${index + 1}`}
           ></button>

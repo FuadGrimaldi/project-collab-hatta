@@ -41,12 +41,12 @@ export default function Navbar({ isLoggedIn, userName }) {
         <div className="sm:flex md:hidden">
           <button
             onClick={toggleMenu}
-            className="text-black hover:text-gray-700 focus:outline-none mr-4 flex justify-center"
+            className="text-secondary-black hover:text-primary-gray focus:outline-none mr-4 flex justify-center"
           >
             <FaBars size={24} />
           </button>
           {menuOpen && (
-            <div className="absolute left-0 top-0 w-full h-screen bg-[#262526] text-white shadow-lg z-20 transition-all duration-500">
+            <div className="absolute left-0 top-0 w-full h-screen bg-secondary-black text-white shadow-lg z-20 transition-all duration-500">
               <div className="flex justify-between items-center px-4 py-4">
                 <Image
                   src="/images/logo-gasruk.svg"
@@ -56,63 +56,63 @@ export default function Navbar({ isLoggedIn, userName }) {
                 />
                 <RxCross1 size={24} onClick={() => setMenuOpen(false)} />
               </div>
-              <Link href="/profile">
-                <div className="block px-4 py-4 hover:bg-gray-700">
+              <Link href="/settings/profile">
+                <div className="block px-4 py-6 hover:bg-primary-gray">
                   <FaUser className="inline mr-2" /> My Profile
                 </div>
               </Link>
-              <div className="border-t border-gray-700 my-2"></div>
+              <div className="border-t border-primary-gray"></div>
 
-              <Link href="/orders">
-                <div className="block px-4 py-4 hover:bg-gray-700">
+              <Link href="/settings/my-orders">
+                <div className="block px-4 py-6 hover:bg-primary-gray">
                   <FaShoppingCart className="inline mr-2" /> My Orders
                 </div>
               </Link>
-              <div className="border-t border-gray-700 my-2"></div>
+              <div className="border-t border-primary-gray"></div>
 
               <Link href="/store">
-                <div className="block px-4 py-4 hover:bg-gray-700">
+                <div className="block px-4 py-6 hover:bg-primary-gray">
                   <FaStore className="inline mr-2" /> My Store
                 </div>
               </Link>
-              <div className="border-t border-gray-700 my-2"></div>
+              <div className="border-t border-primary-gray "></div>
 
               <Link href="/help">
-                <div className="block px-4 py-4 hover:bg-gray-700">
+                <div className="block px-4 py-6 hover:bg-primary-gray">
                   <FaQuestionCircle className="inline mr-2" /> Help
                 </div>
               </Link>
-              <div className="border-t border-gray-700 my-2"></div>
+              <div className="border-t border-primary-gray "></div>
               <Link href="/terms">
-                <div className="block px-4 py-4 hover:bg-gray-700">
+                <div className="block px-4 py-6 hover:bg-primary-gray">
                   <FaFileAlt className="inline mr-2" /> Terms & Conditions
                 </div>
               </Link>
-              <div className="border-t border-gray-700 my-2"></div>
+              <div className="border-t border-primary-gray "></div>
 
               <Link href="/privacy">
-                <div className="block px-4 py-4 hover:bg-gray-700">
+                <div className="block px-4 py-6 hover:bg-primary-gray">
                   <FaLock className="inline mr-2" /> Privacy Policy
                 </div>
               </Link>
-              <div className="border-t border-gray-700 my-2"></div>
+              <div className="border-t border-primary-gray "></div>
 
               <Link href="/about">
-                <div className="block px-4 py-4 hover:bg-gray-700">
+                <div className="block px-4 py-6 hover:bg-primary-gray">
                   <FaInfoCircle className="inline mr-2" /> About
                 </div>
               </Link>
-              <div className="border-t border-gray-700 my-2"></div>
+              <div className="border-t border-primary-gray "></div>
 
               <Link href="/faq">
-                <div className="block px-4 py-4 hover:bg-gray-700">
+                <div className="block px-4 py-6 hover:bg-primary-gray">
                   <FaQuestion className="inline mr-2" /> FAQ
                 </div>
               </Link>
-              <div className="border-t border-gray-700 my-2"></div>
+              <div className="border-t border-primary-gray "></div>
 
-              <Link href="/logout">
-                <div className="block px-4 py-4 hover:bg-gray-700">
+              <Link href="/login">
+                <div className="block px-4 py-6 hover:bg-primary-gray">
                   <FaSignOutAlt className="inline mr-2" /> Logout
                 </div>
               </Link>
@@ -136,11 +136,11 @@ export default function Navbar({ isLoggedIn, userName }) {
             <input
               type="text"
               placeholder="Search Games, Consoles, or Accessories"
-              className="w-full text-sm px-4 py-2 border focus:outline-none focus:ring-2 focus:ring-black pr-10"
+              className="w-full text-sm px-4 py-2 border focus:outline-none focus:ring-2 focus:ring-primary-black pr-10"
             />
             <div className="absolute inset-y-0 right-0 flex items-center">
               <FaSearch
-                className="text-white bg-black w-10 p-3 h-full"
+                className="text-white bg-primary-black w-10 p-3 h-full"
                 size={10}
               />
             </div>
@@ -148,7 +148,7 @@ export default function Navbar({ isLoggedIn, userName }) {
 
           {/* Search Icon for Mobile */}
           <div className="block md:hidden">
-            <IoSearchOutline className="text-black" size={24} />
+            <IoSearchOutline className="text-primary-black" size={24} />
           </div>
 
           <div className="mx-4 h-6 border-l border-gray-300 block md:hidden"></div>
@@ -158,7 +158,7 @@ export default function Navbar({ isLoggedIn, userName }) {
             <Link href="/cart">
               <TiShoppingCart
                 size={24}
-                className="text-black hover:text-gray-700"
+                className="text-primary-black hover:text-secondary-black"
               />
             </Link>
             <span className="absolute top-0 right-0 inline-block w-2 h-2 bg-red-600 rounded-full"></span>
@@ -170,65 +170,68 @@ export default function Navbar({ isLoggedIn, userName }) {
           {/* Login & Sign Up or Wishlist & Profile */}
           {isLoggedIn ? (
             <div className="flex items-center space-x-4">
-              <Link href="/wishlist">
-                <FaHeart size={24} className="text-black hover:text-gray-700" />
+              <Link href="/settings/wishlist">
+                <FaHeart
+                  size={24}
+                  className="text-primary-black hover:text-secondary-black"
+                />
               </Link>
               <div className="mx-4 h-6 border-l border-gray-300 hidden md:block"></div>
 
               <div className="relative hidden md:block">
                 <button
                   onClick={toggleDropdown}
-                  className="flex items-center text-black hover:text-gray-700 focus:outline-none"
+                  className="flex items-center text-primary-black hover:text-secondary-black focus:outline-none"
                 >
                   <FaUser size={24} />
                   <div className="text-sm mx-2 font-medium">{userName}</div>
                   <FaChevronDown className="ml-1" />
                 </button>
                 {dropdownOpen && (
-                  <div className="text-sm absolute left-0 mt-4 w-52 bg-[#262526] text-white rounded-md shadow-lg z-20">
-                    <Link href="/profile">
-                      <div className="block px-4 py-2 hover:bg-gray-700 ">
+                  <div className="text-sm absolute left-0 mt-4 w-52 bg-secondary-black text-white shadow-lg z-20">
+                    <Link href="/settings/profile">
+                      <div className="block px-4 py-4 hover:bg-primary-gray ">
                         <FaUser className="inline mr-2" /> My Profile
                       </div>
                     </Link>
-                    <Link href="/orders">
-                      <div className="block px-4 py-2 hover:bg-gray-700">
+                    <Link href="/settings/my-order">
+                      <div className="block px-4 py-4 hover:bg-primary-gray">
                         <FaShoppingCart className="inline mr-2" /> My Orders
                       </div>
                     </Link>
                     <Link href="/store">
-                      <div className="block px-4 py-2 hover:bg-gray-700">
+                      <div className="block px-4 py-4 hover:bg-primary-gray">
                         <FaStore className="inline mr-2" /> My Store
                       </div>
                     </Link>
                     <Link href="/help">
-                      <div className="block px-4 py-2 hover:bg-gray-700">
+                      <div className="block px-4 py-4 hover:bg-primary-gray">
                         <FaQuestionCircle className="inline mr-2" /> Help
                       </div>
                     </Link>
-                    <div className="border-t border-gray-700 my-2"></div>
+                    <div className="border-t border-primary-gray "></div>
                     <Link href="/terms">
-                      <div className="block px-4 py-2 hover:bg-gray-700">
+                      <div className="block px-4 py-4 hover:bg-primary-gray">
                         <FaFileAlt className="inline mr-2" /> Terms & Conditions
                       </div>
                     </Link>
                     <Link href="/privacy">
-                      <div className="block px-4 py-2 hover:bg-gray-700">
+                      <div className="block px-4 py-4 hover:bg-primary-gray">
                         <FaLock className="inline mr-2" /> Privacy Policy
                       </div>
                     </Link>
                     <Link href="/about">
-                      <div className="block px-4 py-2 hover:bg-gray-700">
+                      <div className="block px-4 py-4 hover:bg-primary-gray">
                         <FaInfoCircle className="inline mr-2" /> About
                       </div>
                     </Link>
                     <Link href="/faq">
-                      <div className="block px-4 py-2 hover:bg-gray-700">
+                      <div className="block px-4 py-4 hover:bg-primary-gray">
                         <FaQuestion className="inline mr-2" /> FAQ
                       </div>
                     </Link>
-                    <Link href="/logout">
-                      <div className="block px-4 py-2 hover:bg-gray-700">
+                    <Link href="/login">
+                      <div className="block px-4 py-4 hover:bg-primary-gray">
                         <FaSignOutAlt className="inline mr-2" /> Logout
                       </div>
                     </Link>
@@ -239,12 +242,15 @@ export default function Navbar({ isLoggedIn, userName }) {
           ) : (
             <div className="flex items-center space-x-4">
               <Link href="/login">
-                <div className="px-4 py-2 text-sm text-gray-700 border border-gray-300 rounded-md hover:bg-gray-100">
+                <div className="px-4 py-2 text-sm text-primary-gray border border-gray-300 rounded-md hover:bg-gray-100">
                   Login
                 </div>
               </Link>
               <Link href="/register">
-                <div className="px-4 py-2 text-sm text-white bg-blue-600 rounded-md hover:bg-blue-700">
+                <div
+                  className="px-4 py-2 text-sm text-white bg-primary-blue
+                 rounded-md hover:bg-secondary-blue"
+                >
                   Sign Up
                 </div>
               </Link>

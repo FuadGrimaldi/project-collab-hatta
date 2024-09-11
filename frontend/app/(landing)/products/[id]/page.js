@@ -167,7 +167,7 @@ export default function ProductDetail() {
 
             {/* Rating dan Feedback */}
             <div className="flex items-center mb-4">
-              <div className="flex text-yellow-400 mr-2">
+              <div className="flex text-primary-yellow mr-2">
                 {[...Array(5)].map((_, index) => {
                   const ratingValue = index + 1;
                   if (product.rating >= ratingValue) {
@@ -185,13 +185,16 @@ export default function ProductDetail() {
             </div>
 
             <p
-              className={`text-[#ECECEC] mb-4 ${
+              className={`text-primary-white mb-4 ${
                 showFullDescription ? "" : "line-clamp-3"
               }`}
             >
               {product.description}
             </p>
-            <button onClick={toggleDescription} className="text-blue-500 mb-4">
+            <button
+              onClick={toggleDescription}
+              className="text-primary-blue mb-4"
+            >
               {showFullDescription ? "Read Less" : "Read More"}
             </button>
           </div>
@@ -199,32 +202,34 @@ export default function ProductDetail() {
           {/* Price and Buttons */}
           <div className="w-full lg:w-2/6">
             <div className="flex flex-col mb-4">
-              <span className="text-lg font-normal text-gray-500">Price</span>
+              <span className="text-lg font-normal text-primary-gray">
+                Price
+              </span>
               <span className="text-2xl font-bold mb-2">
                 Rp {product.discountedPrice.toLocaleString()}
               </span>
               <div className="flex items-center gap-2">
-                <span className="text-gray-500 line-through">
+                <span className="text-primary-gray line-through">
                   Rp {product.price.toLocaleString()}
                 </span>
-                <span className=" text-[#04536C] px-2 py-1 font-bold text-sm">
+                <span className=" text-primary-blue px-2 py-1 font-bold text-sm">
                   {product.discount}% OFF
                 </span>
               </div>
             </div>
 
             <div className="flex flex-col gap-4 mb-8">
-              <button className="w-full bg-green-500 hover:bg-green-600 transition-colors duration-300 text-white px-4 py-2 flex items-center justify-center">
+              <button className="w-full bg-primary-green hover:bg-secondary-green transition-colors duration-300 text-white px-4 py-2 flex items-center justify-center">
                 <FaShoppingCart className="mr-2" /> Add to Cart
               </button>
               <button
                 onClick={toggleWishlist}
-                className="w-full border border-gray-300 px-4 py-2 flex items-center justify-center hover:bg-gray-900 transition-colors duration-300"
+                className="w-full border border-primary-gray px-4 py-2 flex items-center justify-center  transition-colors duration-300 hover:text-primary-red hover:border-primary-red"
               >
                 {isInWishlist ? (
-                  <FaHeart className="mr-2 text-red-500" />
+                  <FaHeart className="mr-2 text-primary-red" />
                 ) : (
-                  <FaRegHeart className="mr-2" />
+                  <FaRegHeart className="mr-2 hover:text-primary-red" />
                 )}
                 {isInWishlist ? "Remove from Wishlist" : "Add to Wishlist"}
               </button>
@@ -261,7 +266,9 @@ export default function ProductDetail() {
                 key={index}
                 onClick={() => changeSlide(index)}
                 className={`h-1 transition-all duration-300 ${
-                  index === activeIndex ? "bg-gray-800 w-8" : "bg-gray-300 w-4"
+                  index === activeIndex
+                    ? "bg-primary-blue w-8"
+                    : "bg-gray-300 w-4"
                 }`}
                 aria-label={`Lihat berita ${index + 1}`}
               ></button>
@@ -276,9 +283,9 @@ export default function ProductDetail() {
               <h2 className="text-xl lg:text-2xl font-bold mb-3">
                 Product Description
               </h2>
-              <span className="absolute bottom-0 left-0 right-0 h-[2px] w-64 bg-[#04536C]"></span>
+              <span className="absolute bottom-0 left-0 right-0 h-[2px] w-64 bg-primary-blue"></span>
             </div>
-            <span className="text-[#ECECEC]">{product.description}</span>
+            <span className="text-primary-white">{product.description}</span>
           </div>
           <div>
             <div className="flex flex-col relative mb-4">
@@ -286,12 +293,12 @@ export default function ProductDetail() {
               <h2 className="text-xl lg:text-2xl font-bold mb-3">
                 Game Detail
               </h2>
-              <span className="absolute bottom-0 left-0 right-0 h-[2px] w-44 md:w-64 bg-[#04536C]"></span>
+              <span className="absolute bottom-0 left-0 right-0 h-[2px] w-44 md:w-64 bg-primary-blue"></span>
             </div>
             {product.detail.map((item, index) => (
               <div key={index} className="flex">
-                <span className="text-[#ECECEC] w-48">{item.title} :</span>
-                <span className="text-[#ECECEC] w-full">
+                <span className="text-primary-white w-48">{item.title} :</span>
+                <span className="text-primary-white w-full">
                   {item.description}
                 </span>
               </div>
@@ -299,9 +306,9 @@ export default function ProductDetail() {
             <div className="flex flex-col relative mb-4 mt-16 lg:mt-6">
               <div className="absolute bottom-0 left-0 right-0 h-px bg-gray-200"></div>
               <h2 className="text-xl lg:text-2xl font-bold mb-3">Languages</h2>
-              <span className="absolute bottom-0 left-0 right-0 h-[2px] w-44 md:w-64 bg-[#04536C]"></span>
+              <span className="absolute bottom-0 left-0 right-0 h-[2px] w-44 md:w-64 bg-primary-blue"></span>
             </div>
-            <span className="text-[#ECECEC]">{product.languages}</span>
+            <span className="text-primary-white">{product.languages}</span>
           </div>
           <div>
             <div className="flex flex-col relative mb-4 ">
@@ -315,29 +322,31 @@ export default function ProductDetail() {
                     onClick={() => setActiveOS("windows")}
                     className={`relative pb-2 ${
                       activeOS === "windows"
-                        ? "text-[#04536C]"
-                        : "text-[#ECECEC]"
+                        ? "text-primary-blue"
+                        : "text-primary-white"
                     }`}
                   >
                     <FaWindows className="text-xl lg:text-3xl" />
                     {activeOS === "windows" && (
-                      <span className="absolute bottom-0 left-0 right-0 h-1 bg-[#04536C]"></span>
+                      <span className="absolute bottom-0 left-0 right-0 h-1 bg-primary-blue"></span>
                     )}
                   </button>
                   <button
                     onClick={() => setActiveOS("mac")}
                     className={`relative pb-2 ${
-                      activeOS === "mac" ? "text-[#04536C]" : "text-[#ECECEC]"
+                      activeOS === "mac"
+                        ? "text-primary-blue"
+                        : "text-primary-white"
                     }`}
                   >
                     <FaApple className="text-xl lg:text-3xl" />
                     {activeOS === "mac" && (
-                      <span className="absolute bottom-0 left-0 right-0 h-1 bg-[#04536C]"></span>
+                      <span className="absolute bottom-0 left-0 right-0 h-1 bg-primary-blue"></span>
                     )}
                   </button>
                 </div>
               </div>
-              <span className="absolute bottom-0 left-0 right-0 h-[2px] w-52 md:w-64 bg-[#04536C]"></span>
+              <span className="absolute bottom-0 left-0 right-0 h-[2px] w-52 md:w-64 bg-primary-blue"></span>
             </div>
 
             <div className="flex flex-col lg:flex-row mb-4 lg:hidden">
@@ -348,10 +357,10 @@ export default function ProductDetail() {
                   </h3>
                   {product.system.map((item, index) => (
                     <div key={`min-${index}`} className="flex mb-2">
-                      <span className="text-[#ECECEC] w-32 block lg:hidden">
+                      <span className="text-primary-white w-32 block lg:hidden">
                         {item.title}:
                       </span>
-                      <span className="text-[#ECECEC] flex-1">
+                      <span className="text-primary-white flex-1">
                         {item.desc1}
                       </span>
                     </div>
@@ -363,10 +372,10 @@ export default function ProductDetail() {
                   </h3>
                   {product.system.map((item, index) => (
                     <div key={`rec-${index}`} className="flex mb-2">
-                      <span className="text-[#ECECEC] w-32 lg:hidden">
+                      <span className="text-primary-white w-32 lg:hidden">
                         {item.title}:
                       </span>
-                      <span className="text-[#ECECEC] flex-1">
+                      <span className="text-primary-white flex-1">
                         {item.desc2}
                       </span>
                     </div>
@@ -377,21 +386,25 @@ export default function ProductDetail() {
             <div className="hidden lg:flex relative mb-4 pb-4">
               <div className="absolute bottom-0 left-0 right-0 h-px bg-gray-200"></div>
 
-              <span className="text-[#ECECEC] text-lg font-semibold w-7/12">
+              <span className="text-primary-white text-lg font-semibold w-7/12">
                 Minimum system requirements:
               </span>
-              <span className="text-[#ECECEC] text-lg font-semibold w-5/12">
+              <span className="text-primary-white text-lg font-semibold w-5/12">
                 Recommended system requirements:
               </span>
             </div>
             <div className="hidden lg:flex flex-col">
               {product.system.map((item, index) => (
                 <div key={index} className="flex mb-2">
-                  <span className="text-[#ECECEC] w-1/6">{item.title}:</span>
-                  <span className="text-[#ECECEC] w-5/12 mr-2">
+                  <span className="text-primary-white w-1/6">
+                    {item.title}:
+                  </span>
+                  <span className="text-primary-white w-5/12 mr-2">
                     {item.desc1}
                   </span>
-                  <span className="text-[#ECECEC] w-5/12">{item.desc2}</span>
+                  <span className="text-primary-white w-5/12">
+                    {item.desc2}
+                  </span>
                 </div>
               ))}
             </div>
@@ -404,7 +417,7 @@ export default function ProductDetail() {
             <h2 className="text-xl lg:text-2xl font-bold mb-3">
               You may like these products
             </h2>
-            <span className="absolute bottom-0 left-0 right-0 h-[2px] w-44 md:w-80 bg-[#04536C]"></span>
+            <span className="absolute bottom-0 left-0 right-0 h-[2px] w-44 md:w-80 bg-primary-blue"></span>
           </div>
           <div className="w-full overflow-x-auto scrollbar-hide mt-8">
             <div className="flex gap-12">

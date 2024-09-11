@@ -10,10 +10,10 @@ export default function CheckoutPageContent({ items, totalItems, totalPrice }) {
   return (
     <div className="flex flex-col lg:flex-row gap-8 mt-8">
       <div className="w-full lg:w-2/3">
-        <div className="bg-black p-6 shadow-md border border-white">
+        <div className="bg-secondary-black p-6 shadow-md border border-white">
           <h2 className="text-xl font-semibold">Checkout</h2>
         </div>
-        <div className="bg-black px-6 pb-6 p-0 lg:p-8 shadow-md mt-8 border border-white">
+        <div className="bg-secondary-black px-6 pb-6 p-0 lg:p-8 shadow-md mt-8 border border-white">
           <h2 className="block lg:hidden text-xl font-semibold mt-8 border-b pb-4">
             Produk
           </h2>
@@ -33,7 +33,7 @@ export default function CheckoutPageContent({ items, totalItems, totalPrice }) {
           </div>
         </div>
 
-        <div className="bg-black mt-10 p-6 lg:p-8 shadow-md border border-white">
+        <div className="bg-secondary-black mt-10 p-6 lg:p-8 shadow-md border border-white">
           <h2 className="text-xl font-semibold mb-4">Choose Payment</h2>
           <PaymentOptions
             selectedMethod={selectedMethod}
@@ -55,12 +55,14 @@ function CheckoutItemTitle() {
       <h2 className="text-xl font-semibold mb-4 ">Produk</h2>
 
       <div className="flex gap-4 justify-between w-full">
-        <h3 className="text-gray-400 w-full max-w-[300px] font-semibold text-sm lg:text-base">
+        <h3 className="text-primary-gray w-full max-w-[300px] font-semibold text-sm lg:text-base">
           Product Name
         </h3>
-        <p className="text-gray-400 text-sm lg:text-base pl-12">Unit Price</p>
-        <p className="text-gray-400 text-sm lg:text-base pl-12">Quantity</p>
-        <p className="text-gray-400 text-sm lg:text-base pr-12">Price</p>
+        <p className="text-primary-gray text-sm lg:text-base pl-12">
+          Unit Price
+        </p>
+        <p className="text-primary-gray text-sm lg:text-base pl-12">Quantity</p>
+        <p className="text-primary-gray text-sm lg:text-base pr-12">Price</p>
       </div>
     </div>
   );
@@ -107,12 +109,12 @@ function PaymentOptions({ selectedMethod, setSelectedMethod }) {
 
   return (
     <div className="space-y-4">
-      <div className="flex font-semibold text-base border-t pt-6">
+      <div className="flex font-semibold text-base border-t border-primary-gray pt-6">
         <span>Credit Card</span>
       </div>
       <div
         key="credit_card"
-        className="flex bg-black items-center justify-between p-4 border border-gray-200 cursor-pointer "
+        className="flex bg-secondary-black items-center justify-between p-4 border border-primary-white cursor-pointer "
         onClick={() => handlePaymentMethodChange("credit_card")}
       >
         <div className="flex items-center gap-4">
@@ -141,7 +143,7 @@ function PaymentOptions({ selectedMethod, setSelectedMethod }) {
       {paymentMethods.map((method) => (
         <div
           key={method.id}
-          className="flex bg-black items-center justify-between p-4 border border-gray-200 cursor-pointer "
+          className="flex bg-secondary-black items-center justify-between p-4 border border-primary-white cursor-pointer "
           onClick={() => handlePaymentMethodChange(method.id)}
         >
           <div className="flex items-center gap-4">
@@ -173,7 +175,7 @@ function OrderSummary({ subtotal, selectedMethod }) {
   const isPaymentSelected = selectedMethod !== "";
 
   return (
-    <div className="bg-black p-6 shadow-md border border-white">
+    <div className="bg-secondary-black p-6 shadow-md border border-white">
       <div className="space-y-2 mb-4">
         <div className="flex justify-between">
           <span>Subtotal</span>
@@ -184,7 +186,7 @@ function OrderSummary({ subtotal, selectedMethod }) {
           <span>Rp {serviceFee.toLocaleString()}</span>
         </div>
       </div>
-      <div className="flex justify-between font-semibold text-base border-t pt-4">
+      <div className="flex justify-between font-semibold text-base border-t border-primary-gray pt-4">
         <span>Total Price</span>
         <span>Rp {total.toLocaleString()}</span>
       </div>
@@ -192,8 +194,8 @@ function OrderSummary({ subtotal, selectedMethod }) {
       <button
         className={`w-full py-3 mt-6 font-semibold transition-colors ${
           isPaymentSelected
-            ? "bg-green-600 hover:bg-green-700 text-white"
-            : "bg-gray-400 text-gray-700 cursor-not-allowed"
+            ? "bg-primary-green hover:bg-secondary-green text-white"
+            : "bg-gray-400 text-primary-white cursor-not-allowed"
         }`}
         disabled={!isPaymentSelected}
       >

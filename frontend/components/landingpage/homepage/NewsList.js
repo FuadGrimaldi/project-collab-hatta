@@ -104,7 +104,7 @@ export default function NewsList() {
             key={index}
             onClick={() => changeSlide(index)}
             className={`h-1 transition-all duration-300 ${
-              index === activeIndex ? "bg-gray-800 w-8" : "bg-gray-300 w-4"
+              index === activeIndex ? "bg-primary-blue w-8" : "bg-gray-300 w-4"
             }`}
             aria-label={`Lihat berita ${index + 1}`}
           ></button>
