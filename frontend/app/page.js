@@ -14,7 +14,7 @@ import PreordersList from "../components/landingpage/homepage/PreordersList";
 import Footer from "../components/landingpage/Footer";
 
 export default function Home() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
 
   return (
     <>

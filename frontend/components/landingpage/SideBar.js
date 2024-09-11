@@ -2,7 +2,6 @@
 
 import Image from "next/image";
 import { FaChevronRight } from "react-icons/fa";
-import Link from "next/link";
 import { useRouter } from "next/navigation";
 
 const menuItems = [

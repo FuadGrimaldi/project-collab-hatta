@@ -10,13 +10,16 @@ import {
   FaArrowLeft,
 } from "react-icons/fa";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 export default function Register() {
+  const router = useRouter();
+
   const [showPassword, setShowPassword] = useState(false);
   const [showRetypePassword, setShowRetypePassword] = useState(false);
 
   return (
-    <section className="bg-black min-h-screen flex">
+    <section className="bg-primary-black min-h-screen flex">
       <div className="w-full md:w-1/2 flex items-center justify-center p-4">
         <div className="w-full max-w-lg mx-5">
           <div className="fixed top-12 flex items-center mb-20">
@@ -90,6 +93,7 @@ export default function Register() {
               </button>
             </div>
             <button
+              onClick={() => router.push("/login")}
               type="submit"
               className="mt-7 w-full text-white bg-primary-blue hover:bg-primary-blue/90 focus:ring-4 focus:outline-none focus:ring-primary-blue/50 font-medium text-xs md:text-sm px-5 py-2.5 text-center"
             >
