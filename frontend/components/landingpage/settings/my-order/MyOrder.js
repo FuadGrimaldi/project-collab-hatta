@@ -41,10 +41,10 @@ export default function MyOrder() {
   const [selectedCategory, setSelectedCategory] = useState("All Categories");
 
   return (
-    <div className="w-full mb-6">
+    <div className="bg-primary-black w-full mb-6">
       <OrderTabs activeTab={activeTab} setActiveTab={setActiveTab} />
 
-      <div className="flex flex-col md:flex-row md:text-center text-left md:items-center items-start gap-0 md:gap-4 mb-6">
+      <div className="bg-primary-black flex flex-col md:flex-row md:text-center text-left md:items-center items-start gap-0 md:gap-4 mb-6">
         <h2 className="text-sm md:text-base mb-2">Category Product :</h2>
         <select
           value={selectedCategory}
@@ -59,11 +59,11 @@ export default function MyOrder() {
         </select>
       </div>
 
-      <div className="space-y-8">
+      <div className="space-y-8 bg-primary-black">
         {sampleOrders.map((order) => (
           <div
             key={order.id}
-            className="flex flex-col gap-4 lg:gap-8 py-8 px-4 lg:px-8 border border-white"
+            className="bg-secondary-black flex flex-col gap-4 lg:gap-8 py-8 px-4 lg:px-8 border border-white"
           >
             <div className="flex flex-col md:flex-row gap-4 md:gap-16">
               <div className="flex gap-4 md:gap-8 w-full lg:w-3/5">
@@ -106,7 +106,7 @@ export default function MyOrder() {
             <hr className="w-full h-[1px] bg-white" />
             <div className="w-full flex-col-reverse md:flex-row gap-4 items-center flex ">
               <div className="flex md:flex-row flex-col gap-4 w-full">
-                <button className="w-full md:w-44 px-4 py-2 text-sm md:text-base bg-[#04536C] text-white hover:bg-[#01465b] transition-colors">
+                <button className="w-full md:w-44 px-4 py-2 text-sm md:text-base bg-primary-blue text-white hover:bg-secondary-blue transition-colors">
                   Detail Ratings
                 </button>
                 <button className="w-full md:w-44 px-4 py-2 text-sm md:text-base border-white border text-white hover:bg-white hover:text-black transition-colors">
@@ -116,7 +116,7 @@ export default function MyOrder() {
               </div>
               <div className="flex flex-col w-full items-end justify-end ">
                 <p className="text-sm">Order Total</p>
-                <p className="text-base font-semibold text-[#04536C]">
+                <p className="text-base font-semibold text-primary-blue">
                   Rp {(order.finalPrice * order.totalItem).toLocaleString()}
                 </p>
               </div>

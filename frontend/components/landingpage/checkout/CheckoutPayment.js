@@ -2,12 +2,7 @@
 
 import Image from "next/image";
 import { useState } from "react";
-import {
-  FaChevronDown,
-  FaChevronRight,
-  FaChevronUp,
-  FaCopy,
-} from "react-icons/fa";
+import { FaChevronDown, FaChevronRight } from "react-icons/fa";
 
 export default function CheckoutPayment({
   bankName,
@@ -63,7 +58,7 @@ export default function CheckoutPayment({
   };
 
   return (
-    <div className="bg-black text-white p-8 rounded-lg shadow-md border border-white">
+    <div className="bg-secondary-black text-white p-8 rounded-lg shadow-md border border-white">
       <div className="flex flex-col md:flex-row justify-between border-b pb-8">
         <div className="flex flex-col md:flex-row md:justify-center md:items-center gap-4">
           <Image src="/images/logo.svg" alt="Logo" width={90} height={40} />
@@ -88,12 +83,12 @@ export default function CheckoutPayment({
         </div>
         <p className="mt-2 text-sm">No. Account:</p>
         <div className="mt-2 flex gap-4 items-center">
-          <p className="text-xl font-bold text-[#04536C]">{accountNumber}</p>
+          <p className="text-xl font-bold text-primary-blue">{accountNumber}</p>
           <button
             onClick={handleCopy}
-            className="flex items-center text-green-400 hover:text-green-300"
+            className="flex items-center text-primary-green hover:text-secondary-green"
           >
-            Copy
+            COPY
           </button>
         </div>
       </div>
@@ -104,9 +99,12 @@ export default function CheckoutPayment({
       </p>
 
       {paymentGuides.map((guide, index) => (
-        <div key={index} className="mt-4 border border-gray-700 rounded-lg">
+        <div
+          key={index}
+          className="mt-4 border border-primary-white rounded-lg"
+        >
           <button
-            className="w-full p-4 flex gap-4 items-center focus:outline-none border-b border-gray-700"
+            className="w-full p-4 flex gap-4 items-center focus:outline-none border-b border-primary-white"
             onClick={() => setOpenGuide(openGuide === index ? null : index)}
           >
             {openGuide === index ? <FaChevronDown /> : <FaChevronRight />}
@@ -125,10 +123,10 @@ export default function CheckoutPayment({
           )}
         </div>
       ))}
-      <button className="w-28 md:w-60 py-3 mt-6 text-sm md:text-base font-semibold transition-colors bg-[#04536C] hover:bg-[#0f4555] text-white">
+      <button className="w-28 md:w-60 py-3 mt-6 text-sm md:text-base font-semibold transition-colors bg-primary-blue hover:bg-secondary-blue text-white">
         Okay
       </button>
-      <button className="w-32 md:w-60 ml-8 py-3 mt-6 text-sm md:text-base font-semibold transition-colors border border-white hover:text-[#04536C] hover:border-[#04536C] text-white">
+      <button className="w-32 md:w-60 ml-8 py-3 mt-6 text-sm md:text-base font-semibold transition-colors border border-white hover:text-primary-blue hover:border-secondary-blue text-white">
         Shop Again
       </button>
     </div>

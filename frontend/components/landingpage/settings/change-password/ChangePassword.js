@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import Image from "next/image";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 export default function ChangePassword() {
@@ -66,8 +65,8 @@ export default function ChangePassword() {
   );
 
   return (
-    <div className="w-full pb-10 p-6 border border-white">
-      <div className="flex items-center mx-0 lg:mx-6 border-b border-[#808080]">
+    <div className="bg-secondary-black w-full pb-10 p-6 border border-white">
+      <div className="flex items-center mx-0 lg:mx-6 border-b border-secondary-gray">
         <h1 className="text-2xl font-bold mb-6 mt-6">Change Password</h1>
       </div>
       <div className="flex gap-6 mt-8 mx-0 lg:mx-6 ">
@@ -90,14 +89,14 @@ export default function ChangePassword() {
           <div className="flex">
             <button
               type="submit"
-              className="mt-4 px-4 py-2 w-40 bg-[#04536C] text-white hover:bg-[#01465b] transition-colors"
+              className="mt-4 px-4 py-2 w-40 bg-primary-blue text-white hover:bg-secondary-blue transition-colors"
             >
               Save Changes
             </button>
           </div>
         </form>
         <div className="w-1/2 hidden lg:block">
-          <p className="text-sm text-[#04536C] mt-9 underline">
+          <p className="text-sm text-primary-blue mt-9 underline">
             Forgot Password ?
           </p>
         </div>

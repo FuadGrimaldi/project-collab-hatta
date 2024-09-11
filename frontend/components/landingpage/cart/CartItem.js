@@ -10,14 +10,14 @@ export default function CartItem({
 }) {
   return (
     <div className="relative flex flex-row gap-4 lg:gap-8 py-8 px-0 lg:px-12 first:-mt-[0.2px]">
-      <div className="absolute inset-x-4 lg:inset-x-12 top-0 h-[0.2px] bg-gray-300"></div>
+      <div className="absolute inset-x-4 lg:inset-x-12 top-0 h-[0.2px] bg-primary-gray"></div>
 
       <div className="flex items-center justify-center">
         <input
           type="checkbox"
           checked={isSelected}
           onChange={() => toggleSelection(item.id)}
-          className="w-4 h-4 lg:w-5 lg:h-5"
+          className="w-4 h-4 lg:w-5 lg:h-5 peer appearance-none checked:bg-primary-blue checked:border-transparent"
         />
       </div>
       <Image
@@ -36,18 +36,18 @@ export default function CartItem({
           <div className="flex w-auto h-6 lg:h-8 mt-2 lg:mt-0 gap-0 text-sm font-light">
             <button
               onClick={() => updateQuantity(item.id, item.quantity - 1)}
-              className="text-black bg-[#ececec] px-2 py-1 text-xs lg:text-sm font-light w-6 h-6 lg:w-8 lg:h-8"
+              className="text-primary-blue bg-primary-white px-2 py-1 text-xs lg:text-sm font-light w-6 h-6 lg:w-8 lg:h-8"
             >
               <FaMinus />
             </button>
             <input
-              className="w-10 text-center bg-black text-white border border-[#ececec] text-xslg:text-sm font-light"
+              className="w-10 text-center bg-secondary-black text-white border border-primary-white text-xslg:text-sm font-light"
               value={item.quantity}
               readOnly
             />
             <button
               onClick={() => updateQuantity(item.id, item.quantity + 1)}
-              className="text-black bg-[#ececec] px-2 py-1 text-xs lg:text-sm font-light"
+              className=" bg-primary-white text-primary-blue px-2 py-1 text-xs lg:text-sm font-light"
             >
               <FaPlus />
             </button>
@@ -65,7 +65,7 @@ export default function CartItem({
         <div>
           <button
             onClick={() => removeItem(item.id)}
-            className="hidden lg:block ml-auto w-12 text-xl text-gray-500 hover:text-red-500 transition-colors mt-2 lg:mt-0"
+            className="hidden lg:block ml-auto w-12 text-xl text-primary-white hover:text-primary-red transition-colors mt-2 lg:mt-0"
           >
             <FaTimes />
           </button>

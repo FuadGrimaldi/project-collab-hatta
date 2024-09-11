@@ -26,7 +26,7 @@ export default function OrderTabs({ activeTab, setActiveTab }) {
 
   if (isMobile) {
     return (
-      <div className="mb-6">
+      <div className="mb-6 bg-secondary-black">
         <select
           value={activeTab}
           onChange={(e) => setActiveTab(e.target.value)}
@@ -43,15 +43,15 @@ export default function OrderTabs({ activeTab, setActiveTab }) {
   }
 
   return (
-    <div className="border-white border mb-6">
+    <div className="bg-secondary-black border-white border mb-6">
       <div className="flex justify-around gap-4">
         {orderTabs.map((tab) => (
           <button
             key={tab}
             className={`px-4 py-4 ${
               activeTab === tab
-                ? "border-b-4 border-[#04536C] text-[#04536C]"
-                : "text-gray-700"
+                ? "border-b-4 border-primary-blue text-primary-blue"
+                : "text-primary-gray"
             }`}
             onClick={() => setActiveTab(tab)}
           >

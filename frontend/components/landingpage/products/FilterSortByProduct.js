@@ -17,7 +17,7 @@ export default function FilterSortByProduct() {
       <span className="font-normal text-center">Sort By:</span>
       <div>
         <select
-          className="w-full p-2 border text-black "
+          className="w-full p-2 border text-black"
           value={selectedSort}
           onChange={(e) => setSelectedSort(e.target.value)}
         >

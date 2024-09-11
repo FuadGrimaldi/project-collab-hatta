@@ -126,14 +126,14 @@ export default function ProductsPage() {
                   key={tab}
                   className={`py-2 px-4 text-sm font-medium relative ${
                     activeTab === tab
-                      ? "text-[#04536C]"
+                      ? "text-primary-blue"
                       : "text-white hover:text-gray-500"
                   }`}
                   onClick={() => setActiveTab(tab)}
                 >
                   {tab}
                   {activeTab === tab && (
-                    <span className="absolute bottom-0 left-0 right-0 h-1 bg-[#04536C]"></span>
+                    <span className="absolute bottom-0 left-0 right-0 h-1 bg-primary-blue"></span>
                   )}
                 </button>
               ))}

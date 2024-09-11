@@ -7,10 +7,10 @@ import { useRouter } from "next/navigation";
 
 const menuItems = [
   { id: "profile", label: "Profile" },
-  { id: "myOrder", label: "My Order" },
-  { id: "myItem", label: "My Item" },
+  { id: "my-order", label: "My Order" },
+  { id: "my-item", label: "My Item" },
   { id: "address", label: "Address" },
-  { id: "changePassword", label: "Change Password" },
+  { id: "change-password", label: "Change Password" },
   { id: "notification", label: "Notification" },
   { id: "wishlist", label: "Wishlist" },
 ];
@@ -23,7 +23,7 @@ export default function Sidebar({ activeTab }) {
   };
 
   return (
-    <div className="bg-black text-white p-6 shadow-md border border-white w-full md:w-64">
+    <div className="bg-secondary-black text-white p-6 shadow-md border border-white w-full md:w-64">
       <div className="flex items-center mb-6">
         <Image
           src="/images/img-profile.svg"
@@ -37,7 +37,7 @@ export default function Sidebar({ activeTab }) {
           <p className="text-sm text-gray-400">firyal@example.com</p>
         </div>
       </div>
-      <hr className="border-gray-700 mb-6" />
+      <hr className="border-secondary-gray mb-6" />
       <nav>
         <ul>
           {menuItems.map((item) => (
@@ -46,13 +46,13 @@ export default function Sidebar({ activeTab }) {
                 onClick={() => handleItemClick(item.id)}
                 className={`w-full flex justify-between items-center p-2 rounded ${
                   activeTab === item.id
-                    ? "text-[#04536C]"
-                    : "text-white hover:bg-gray-800"
+                    ? "text-primary-blue"
+                    : "text-white hover:bg-primary-blue"
                 }`}
               >
                 <span>{item.label}</span>
                 <FaChevronRight
-                  className={activeTab === item.id ? "text-[#04536C]" : ""}
+                  className={activeTab === item.id ? "text-primary-blue" : ""}
                 />
               </button>
             </li>

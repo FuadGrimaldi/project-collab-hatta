@@ -42,7 +42,7 @@ export default function Wishlist() {
   };
 
   return (
-    <div className="w-full p-6 border border-white">
+    <div className="bg-secondary-black w-full p-6 border border-white">
       {wishItems.length > 0 ? (
         <WishlistCard items={wishItems} removeItem={removeItem} />
       ) : (

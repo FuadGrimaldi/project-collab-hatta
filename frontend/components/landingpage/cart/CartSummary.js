@@ -38,7 +38,7 @@ export default function CartSummary({ subtotal, serviceFee, total }) {
       </div>
       <button
         onClick={handleCheckout}
-        className="w-full bg-green-500 text-white py-2 rounded hover:bg-green-600 transition-colors"
+        className="w-full bg-primary-green text-white py-2 rounded hover:bg-secondary-green transition-colors"
       >
         Checkout
       </button>

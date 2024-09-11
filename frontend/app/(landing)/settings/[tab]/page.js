@@ -23,13 +23,13 @@ export default function SettingsPage() {
         return <Profile />;
       case "wishlist":
         return <Wishlist />;
-      case "myOrder":
+      case "my-order":
         return <MyOrder />;
-      case "myItem":
+      case "my-item":
         return <MyItem />;
       case "address":
         return <Address />;
-      case "changePassword":
+      case "change-password":
         return <ChangePassword />;
       case "notification":
         return <Notification />;
@@ -45,7 +45,7 @@ export default function SettingsPage() {
         <div>
           <Sidebar activeTab={tab} />
         </div>
-        <div className="w-full bg-black text-white shadow-md ">
+        <div className="w-full bg-primary-black text-white shadow-md ">
           {renderContent()}
         </div>
       </div>

@@ -27,8 +27,8 @@ export default function AddAddress() {
   };
 
   return (
-    <div className="w-full mb-6">
-      <div className="flex items-center mx-0 lg:mx-6 border-b border-[#808080]">
+    <div className=" w-full mb-6">
+      <div className="flex items-center mx-0 lg:mx-6 border-b border-secondary-gray">
         <h1 className="text-2xl font-bold mb-6 mt-6">Add Address</h1>
       </div>
       <div className="flex gap-8 mt-8 mx-0 lg:mx-6 ">

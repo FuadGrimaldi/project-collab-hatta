@@ -14,7 +14,7 @@ export default function AddAddressPage() {
         <div className="w-full lg:w-64">
           <Sidebar activeTab="address" />
         </div>
-        <div className="w-full bg-black text-white p-6 shadow-md border border-white">
+        <div className="w-full bg-secondary-black text-white p-6 shadow-md border border-white">
           <AddAddress />
         </div>
       </div>
