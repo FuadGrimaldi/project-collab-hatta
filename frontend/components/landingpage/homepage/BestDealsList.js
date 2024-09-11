@@ -59,7 +59,7 @@ export default function BestDealsList() {
     <div className="relative w-full">
       <button
         onClick={() => handleScroll("prev")}
-        className="absolute -left-5 top-1/2 transform -translate-y-1/2 bg-[#04536C] hover:bg-[#033A4B] transition-colors duration-300 text-white rounded-full p-3 z-10"
+        className="absolute -left-5 top-1/2 transform -translate-y-1/2 bg-primary-blue hover:bg-secondary-blue transition-colors duration-300 text-white rounded-full p-3 z-10"
         aria-label="Previous"
       >
         <IoIosArrowBack />
@@ -86,7 +86,7 @@ export default function BestDealsList() {
 
       <button
         onClick={() => handleScroll("next")}
-        className="absolute -right-5 top-1/2 transform -translate-y-1/2 bg-[#04536C] hover:bg-[#033A4B] transition-colors duration-300 text-white rounded-full p-3 z-10"
+        className="absolute -right-5 top-1/2 transform -translate-y-1/2 bg-primary-blue hover:bg-secondary-blue transition-colors duration-300 text-white rounded-full p-3 z-10"
         aria-label="Next"
       >
         <IoIosArrowForward />

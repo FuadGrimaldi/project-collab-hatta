@@ -3,12 +3,12 @@ import ReadMoreButton from "../button/ReadMoreButton";
 
 export default function News({ image, title, date }) {
   return (
-    <div className="bg-black h-full min-w-40 md:min-w-92 border border-gray-900 shadow-md overflow-hidden flex flex-col">
+    <div className="bg-secondary-black h-full min-w-40 md:min-w-92 border border-primary-gray shadow-md overflow-hidden flex flex-col">
       <div className="relative h-40 md:h-48 w-full group">
         <Image src={image} layout="fill" objectFit="cover" alt={title} />
       </div>
       <div className="p-4 flex flex-col flex-grow">
-        <span className="text-xs text-gray-500">
+        <span className="text-xs text-primary-gray">
           {(() => {
             const d = new Date(date);
             const weekday = d.toLocaleDateString("en-US", { weekday: "long" });

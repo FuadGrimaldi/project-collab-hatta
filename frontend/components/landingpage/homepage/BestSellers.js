@@ -6,7 +6,7 @@ export default function BestSellers({ image, title, price, discount }) {
   const discountedPrice = calculateDiscountedPrice(price, discount);
 
   return (
-    <article className="bg-black h-full w-full border border-gray-900 shadow-md overflow-hidden flex">
+    <article className="bg-secondary-black h-full w-full border border-primary-gray shadow-md overflow-hidden flex">
       <div className="relative h-32 w-20 flex-shrink-0">
         <Image
           src={image}
@@ -35,10 +35,10 @@ export default function BestSellers({ image, title, price, discount }) {
 function PriceDisplay({ originalPrice, discountedPrice }) {
   return (
     <div className="flex flex-col items-start">
-      <span className="text-gray-500 text-xs md:text-sm line-through">
+      <span className="text-primary-gray text-xs md:text-sm line-through">
         Rp {originalPrice.toLocaleString()}
       </span>
-      <span className="text-sm md:text-base font-bold text-blue-600">
+      <span className="text-sm md:text-base font-bold text-primary-blue">
         Rp {discountedPrice.toLocaleString()}
       </span>
     </div>

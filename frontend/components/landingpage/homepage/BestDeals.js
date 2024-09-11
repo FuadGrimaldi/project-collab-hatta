@@ -16,15 +16,19 @@ export default function BestDeals({
 
   return (
     <div
-      className={`bg-black h-full  border border-gray-900 shadow-md overflow-hidden flex flex-col ${className}`}
+      className={`bg-secondary-black h-full  border border-black-50 shadow-md overflow-hidden flex flex-col ${className}`}
     >
       <div className="relative h-40 md:h-48 w-full group">
         <Image src={image} layout="fill" objectFit="cover" alt={title} />
-        <div className="absolute top-0 left-0 bg-[#F84343] text-white px-3 py-1 text-xs md:text-sm ">
+        <div className="absolute top-0 left-0 bg-primary-red text-white px-3 py-1 text-xs md:text-sm ">
           {discount}%
         </div>
         <div className="absolute top-0 right-0 bg-[#262526] rounded-full text-white p-3 m-2 text-smmd:text-md ">
-          {wishlist ? <FaHeart className="text-[#04536C]" /> : <FaRegHeart />}
+          {wishlist ? (
+            <FaHeart className="text-primary-blue" />
+          ) : (
+            <FaRegHeart />
+          )}
         </div>
         <SeeDetailButton />
       </div>
@@ -36,10 +40,10 @@ export default function BestDeals({
         <div className="flex justify-between items-end">
           <CartButton className="min-w-14 md:min-w-24 " />
           <div className="flex flex-col items-end">
-            <span className="text-gray-500 text-xs md:text-sm line-through">
+            <span className="text-primary-gray text-xs md:text-sm line-through">
               Rp {price.toLocaleString()}
             </span>
-            <span className="text-sm md:text-lg font-bold text-blue-600">
+            <span className="text-sm md:text-lg font-bold text-primary-blue">
               Rp {discountedPrice.toLocaleString()}
             </span>
           </div>
