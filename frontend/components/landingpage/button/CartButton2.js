@@ -1,4 +1,4 @@
-export default function CartButton({ className = "min-w-32" }) {
+export default function CartButton2({ className = "min-w-32" }) {
   return (
     <button
       className={`bg-primary-green hover:bg-secondary-green text-white py-1 transition-all duration-300 hover:shadow-lg ${className}`}

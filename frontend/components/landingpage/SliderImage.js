@@ -1,7 +1,9 @@
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import { useState, useEffect, useCallback } from "react";
 
 export default function SliderImage() {
+  const router = useRouter();
   const [activeIndex, setActiveIndex] = useState(0);
   const vouchers = [
     {
@@ -67,7 +69,10 @@ export default function SliderImage() {
                   Quisquam, quos. Lorem ipsum dolor sit amet consectetur
                 </p>
 
-                <button className="bg-primary-green hover:bg-secondary-green transition-colors duration-300 text-white w-24 text-[10px] md:text-base md:w-40 px-2 md:px-4 py-1 md:py-2 mt-4 ">
+                <button
+                  onClick={() => router.push("/products/1")}
+                  className="bg-primary-green hover:bg-secondary-green transition-colors duration-300 text-white w-24 text-[10px] md:text-base md:w-40 px-2 md:px-4 py-1 md:py-2 mt-4 "
+                >
                   Buy Now
                 </button>
               </div>

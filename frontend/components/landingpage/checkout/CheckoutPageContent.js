@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { FaChevronRight } from "react-icons/fa";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 export default function CheckoutPageContent({ items, totalItems, totalPrice }) {
   const [selectedMethod, setSelectedMethod] = useState("");
@@ -168,6 +169,7 @@ function PaymentOptions({ selectedMethod, setSelectedMethod }) {
 }
 
 function OrderSummary({ subtotal, selectedMethod }) {
+  const router = useRouter();
   const serviceFeePercentage = 0.05;
   const serviceFee = subtotal * serviceFeePercentage;
   const total = subtotal + serviceFee;
@@ -192,6 +194,7 @@ function OrderSummary({ subtotal, selectedMethod }) {
       </div>
 
       <button
+        onClick={() => router.push("checkout-payment")}
         className={`w-full py-3 mt-6 font-semibold transition-colors ${
           isPaymentSelected
             ? "bg-primary-green hover:bg-secondary-green text-white"

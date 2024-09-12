@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import BestDeals from "../../../components/landingpage/homepage/BestDeals";
 import FilterProduct from "../../../components/landingpage/products/FilterProduct";
 import FilterSortByProduct from "../../../components/landingpage/products/FilterSortByProduct";
@@ -9,16 +9,39 @@ import Footer from "../../../components/landingpage/Footer";
 import { FaFilter, FaSort } from "react-icons/fa";
 import SortModal from "../../../components/landingpage/modal/SortModal";
 import FilterModal from "../../../components/landingpage/modal/FilterModal";
+import { getProducts, setAuthToken } from "../../../services/api";
+import ErrorPage from "../../../components/landingpage/ErrorPage";
 
 const tabs = ["All Games", "New Releases", "Upcoming", "Sale"];
 
 export default function ProductsPage() {
   const [activeTab, setActiveTab] = useState("All Games");
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
   const [showSortModal, setShowSortModal] = useState(false);
   const [sortOption, setSortOption] = useState("newest");
   const [showFilterModal, setShowFilterModal] = useState(false);
   const [filters, setFilters] = useState({});
+  const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const token = localStorage.getItem("authToken");
+    setAuthToken(token);
+
+    const fetchProducts = async () => {
+      try {
+        const data = await getProducts();
+        console.log("data", data);
+        setProducts(data.data);
+      } catch (err) {
+        setError("Failed to fetch products.");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchProducts();
+  }, []);
 
   const handleSortChange = (option) => {
     setSortOption(option);
@@ -34,47 +57,16 @@ export default function ProductsPage() {
     setShowFilterModal(false);
   };
 
-  const products = [
-    {
-      id: 1,
-      image: "/images/rec1.png",
-      title: "Destroy All Humans Game - Mobile Game",
-      price: 500000,
-      discount: 20,
-    },
-    {
-      id: 2,
-      image: "/images/rec2.png",
-      title: "Destroy All Humans Game - Mobile Game",
-      price: 600000,
-      discount: 15,
-    },
-    {
-      id: 1,
-      image: "/images/news1.png",
-      title: "Destroy All Humans Game - Mobile Game",
-      price: 500000,
-      discount: 20,
-    },
-    {
-      id: 2,
-      image: "/images/new2.png",
-      title: "Destroy All Humans Game - Mobile Game",
-      price: 600000,
-      discount: 15,
-    },
-    {
-      id: 1,
-      image: "/images/news3.png",
-      title: "Destroy All Humans Game - Mobile Game",
-      price: 500000,
-      discount: 20,
-    },
-  ];
+  if (error)
+    return (
+      <div>
+        <ErrorPage />
+      </div>
+    );
 
   return (
     <div className="min-h-screen flex flex-col">
-      <Navbar isLoggedIn={isLoggedIn} userName={"Firyal"} />
+      <Navbar />
       <main className="flex-grow px-6 md:px-16 pb-16 pt-28">
         {/* Kontrol mobile */}
         <div className="lg:hidden flex flex-col gap-5 mb-4">
@@ -140,7 +132,7 @@ export default function ProductsPage() {
             </div>
 
             <div className="flex justify-between mt-4">
-              <span className="text-white">(20.000 Products)</span>
+              <span className="text-white">({products.length} Products)</span>
               <div className="hidden lg:block">
                 <FilterSortByProduct />
               </div>
@@ -148,13 +140,13 @@ export default function ProductsPage() {
 
             {/* Grid produk */}
             <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 mt-8">
-              {products.map((product, index) => (
+              {products.map((product) => (
                 <BestDeals
-                  key={`${product.id}-${index}`}
-                  image={product.image}
-                  title={product.title}
+                  key={product.id}
+                  image={"/images/rec1.png"}
+                  title={product.name}
                   price={product.price}
-                  discount={product.discount}
+                  discount={10}
                 />
               ))}
             </div>

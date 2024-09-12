@@ -11,15 +11,62 @@ import {
 } from "react-icons/fa";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import axios from "axios";
+import BASE_URL from "../../../config/config";
+import Notification from "../../../components/landingpage/Notification";
 
 export default function Register() {
   const router = useRouter();
 
   const [showPassword, setShowPassword] = useState(false);
   const [showRetypePassword, setShowRetypePassword] = useState(false);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [notification, setNotification] = useState(null);
+
+  const handleRegister = async (e) => {
+    e.preventDefault();
+    if (password !== confirmPassword) {
+      alert("Password dan konfirmasi password tidak cocok!");
+      return;
+    }
+
+    setLoading(true);
+    try {
+      const response = await axios.post(`${BASE_URL}/users/register`, {
+        email,
+        password,
+        password_confirmation: confirmPassword,
+        role: "buyer",
+        firstname: "firstname",
+        lastname: "lastname",
+      });
+
+      console.log("Register Success:", response.data);
+      setNotification({ message: "Register Success!", type: "success" });
+      router.push("/login");
+    } catch (error) {
+      console.error(
+        "Terjadi kesalahan:",
+        error.response ? error.response.data : error.message
+      );
+      setNotification({ message: "Register failed!", type: "error" });
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
-    <section className="bg-primary-black min-h-screen flex">
+    <section className="bg-primary-black min-h-screen flex relative">
+      {notification && (
+        <Notification
+          message={notification.message}
+          type={notification.type}
+          onClose={() => setNotification(null)}
+        />
+      )}
       <div className="w-full md:w-1/2 flex items-center justify-center p-4">
         <div className="w-full max-w-lg mx-5">
           <div className="fixed top-12 flex items-center mb-20">
@@ -39,16 +86,17 @@ export default function Register() {
           <p className="text-xs md:text-sm font-light text-gray-300 mb-6">
             Lorem ipsum dolor sit amet consectetur adipisicing elit.
           </p>
-          <form action="#">
+          <form onSubmit={handleRegister}>
             <input
               type="email"
               name="email"
               id="email"
               className="bg-white text-gray-700 text-xs md:text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-              placeholder="Username or Email"
+              placeholder="Email"
               required=""
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
             />
-
             <div className="relative mt-4">
               <input
                 type={showPassword ? "text" : "password"}
@@ -57,6 +105,8 @@ export default function Register() {
                 placeholder="Password"
                 className="bg-white text-gray-700 text-xs md:text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                 required=""
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
               />
               <button
                 type="button"
@@ -70,15 +120,16 @@ export default function Register() {
                 )}
               </button>
             </div>
-
             <div className="relative mt-4">
               <input
                 type={showRetypePassword ? "text" : "password"}
-                name="confirm-password"
-                id="confirm-password"
+                name="password_confirmation"
+                id="password_confirmation"
                 placeholder="Re-password"
                 className="bg-white text-gray-700 text-xs md:text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                 required=""
+                value={confirmPassword}
+                onChange={(e) => setConfirmPassword(e.target.value)}
               />
               <button
                 type="button"
@@ -93,11 +144,11 @@ export default function Register() {
               </button>
             </div>
             <button
-              onClick={() => router.push("/login")}
               type="submit"
               className="mt-7 w-full text-white bg-primary-blue hover:bg-primary-blue/90 focus:ring-4 focus:outline-none focus:ring-primary-blue/50 font-medium text-xs md:text-sm px-5 py-2.5 text-center"
+              disabled={loading}
             >
-              Register
+              {loading ? "Loading..." : "Register"}
             </button>
           </form>
           <div className="mt-7">
@@ -111,14 +162,16 @@ export default function Register() {
             <div className="mt-7 space-y-3">
               <button
                 type="button"
-                className="w-full text-white bg-black hover:bg-[#EB4335] border border-[#EB4335] font-medium text-xs md:text-sm px-5 py-2.5 text-center inline-flex items-center justify-center"
+                onClick={() => router.push("/")}
+                className="w-full text-white bg-primary-black hover:bg-[#EB4335] border border-[#EB4335] font-medium text-xs md:text-sm px-5 py-2.5 text-center inline-flex items-center justify-center"
               >
                 <FaGoogle className="mr-2 " />
                 LOGIN WITH GOOGLE
               </button>
               <button
                 type="button"
-                className="w-full text-white bg-black border border-[#3b5998] hover:bg-[#3b5998]/90 focus:ring-4 focus:outline-none focus:ring-[#3b5998]/50 font-medium text-xs md:text-sm px-5 py-2.5 text-center inline-flex items-center justify-center"
+                onClick={() => router.push("/")}
+                className="w-full text-white bg-primary-black border border-[#3b5998] hover:bg-[#3b5998]/90 focus:ring-4 focus:outline-none focus:ring-[#3b5998]/50 font-medium text-xs md:text-sm px-5 py-2.5 text-center inline-flex items-center justify-center"
               >
                 <FaFacebook className="mr-2" />
                 LOGIN WITH FACEBOOK
@@ -145,19 +198,6 @@ export default function Register() {
           className="absolute inset-0"
         />
       </div>
-      {/* kalau ga kepotong codenya ini */}
-      {/* <div className="w-1/2 relative bg-[#0150AB] flex items-center justify-center">
-        <div className="absolute inset-0">
-          <Image
-            src="/images/register.svg"
-            alt="register"
-            layout="fill"
-            objectFit="contain"
-            objectPosition="left" // atau "right" untuk rata kanan
-            className="w-full h-full"
-          />
-        </div>
-      </div> */}
     </section>
   );
 }

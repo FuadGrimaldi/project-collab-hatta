@@ -6,10 +6,9 @@ import Sidebar from "../../../../../components/landingpage/SideBar";
 import AddAddress from "../../../../../components/landingpage/settings/address/AddAddress";
 
 export default function AddAddressPage() {
-  const isLoggedIn = true;
   return (
     <div>
-      <Navbar isLoggedIn={isLoggedIn} userName="Firyal" />
+      <Navbar />
       <div className="flex flex-col lg:flex-row gap-8 p-8 mt-24">
         <div className="w-full lg:w-64">
           <Sidebar activeTab="address" />

@@ -3,7 +3,7 @@
 import { useRouter } from "next/navigation";
 import { useState, useEffect } from "react";
 
-export default function CartSummary({ subtotal, serviceFee, total }) {
+export default function CartSummary({ subtotal, serviceFee, total, hasItems }) {
   const [isMounted, setIsMounted] = useState(false);
   const router = useRouter();
 
@@ -12,13 +12,13 @@ export default function CartSummary({ subtotal, serviceFee, total }) {
   }, []);
 
   const handleCheckout = () => {
-    if (isMounted) {
+    if (isMounted && hasItems) {
       router.push("/checkout");
     }
   };
 
   if (!isMounted) {
-    return null; // atau tampilkan placeholder loading
+    return null;
   }
 
   return (
@@ -38,7 +38,12 @@ export default function CartSummary({ subtotal, serviceFee, total }) {
       </div>
       <button
         onClick={handleCheckout}
-        className="w-full bg-primary-green text-white py-2 rounded hover:bg-secondary-green transition-colors"
+        className={`w-full py-2 rounded transition-colors ${
+          hasItems
+            ? "bg-primary-green text-white hover:bg-secondary-green"
+            : "bg-gray-400 text-gray-200 cursor-not-allowed"
+        }`}
+        disabled={!hasItems}
       >
         Checkout
       </button>

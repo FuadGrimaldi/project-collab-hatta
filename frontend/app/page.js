@@ -2,7 +2,6 @@
 
 import SliderImage from "../components/landingpage/SliderImage";
 import Navbar from "../components/landingpage/Navbar";
-import { useState } from "react";
 import BestDealsList from "../components/landingpage/homepage/BestDealsList";
 import TrendingList from "../components/landingpage/homepage/TrendingList";
 import SectionHeader from "../components/landingpage/SectionHeader";
@@ -14,11 +13,9 @@ import PreordersList from "../components/landingpage/homepage/PreordersList";
 import Footer from "../components/landingpage/Footer";
 
 export default function Home() {
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
-
   return (
     <>
-      <Navbar isLoggedIn={isLoggedIn} userName={"Firyal"} />
+      <Navbar />
       <div className="mt-16">
         <SliderImage />
       </div>

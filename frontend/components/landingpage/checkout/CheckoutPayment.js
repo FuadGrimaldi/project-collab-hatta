@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { FaChevronDown, FaChevronRight } from "react-icons/fa";
 
@@ -10,6 +11,7 @@ export default function CheckoutPayment({
   totalAmount,
 }) {
   const [openGuide, setOpenGuide] = useState(0);
+  const router = useRouter();
 
   const paymentGuides = [
     {
@@ -123,10 +125,16 @@ export default function CheckoutPayment({
           )}
         </div>
       ))}
-      <button className="w-28 md:w-60 py-3 mt-6 text-sm md:text-base font-semibold transition-colors bg-primary-blue hover:bg-secondary-blue text-white">
+      <button
+        onClick={() => router.push("/")}
+        className="w-28 md:w-60 py-3 mt-6 text-sm md:text-base font-semibold transition-colors bg-primary-blue hover:bg-secondary-blue text-white"
+      >
         Okay
       </button>
-      <button className="w-32 md:w-60 ml-8 py-3 mt-6 text-sm md:text-base font-semibold transition-colors border border-white hover:text-primary-blue hover:border-secondary-blue text-white">
+      <button
+        onClick={() => router.push("/products")}
+        className="w-32 md:w-60 ml-8 py-3 mt-6 text-sm md:text-base font-semibold transition-colors border border-white hover:text-primary-blue hover:border-secondary-blue text-white"
+      >
         Shop Again
       </button>
     </div>
