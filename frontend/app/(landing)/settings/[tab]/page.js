@@ -15,7 +15,6 @@ import Notification from "../../../../components/landingpage/settings/notificati
 export default function SettingsPage() {
   const params = useParams();
   const tab = params.tab;
-  const isLoggedIn = true;
 
   const renderContent = () => {
     switch (tab) {
@@ -40,7 +39,7 @@ export default function SettingsPage() {
 
   return (
     <div>
-      <Navbar isLoggedIn={isLoggedIn} userName="Firyal" />
+      <Navbar />
       <div className="flex flex-col lg:flex-row gap-8 p-8 mt-24">
         <div>
           <Sidebar activeTab={tab} />

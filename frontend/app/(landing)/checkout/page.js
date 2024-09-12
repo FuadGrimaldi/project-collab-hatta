@@ -42,11 +42,10 @@ function calculateTotals(items) {
 
 export default function CheckoutPage() {
   const { totalItems, totalPrice } = calculateTotals(dummyItems);
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
 
   return (
     <>
-      <Navbar isLoggedIn={isLoggedIn} userName={"Firyal"} />
+      <Navbar />
       <div className="mx-auto px-8 lg:px-16 pt-24">
         <CheckoutPageContent
           items={dummyItems}

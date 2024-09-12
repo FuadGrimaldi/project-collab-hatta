@@ -13,7 +13,7 @@ import Navbar from "../../../../components/landingpage/Navbar";
 import Footer from "../../../../components/landingpage/Footer";
 import { FaStar, FaStarHalfAlt, FaRegStar } from "react-icons/fa";
 import BestDeals from "../../../../components/landingpage/homepage/BestDeals";
-import BestDealsList from "../../../../components/landingpage/homepage/BestDealsList";
+import { useRouter } from "next/navigation";
 
 const vouchers = [
   {
@@ -106,10 +106,10 @@ const product = {
 };
 
 export default function ProductDetail() {
+  const router = useRouter();
   const [showFullDescription, setShowFullDescription] = useState(false);
   const [activeIndex, setActiveIndex] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
   const [activeOS, setActiveOS] = useState("windows");
   const [isInWishlist, setIsInWishlist] = useState(false);
 
@@ -147,7 +147,7 @@ export default function ProductDetail() {
 
   return (
     <div className="min-h-screen flex flex-col">
-      <Navbar isLoggedIn={isLoggedIn} userName={"Firyal"} />
+      <Navbar />
       <div className="px-6 md:px-24 pt-32">
         <div className="flex flex-col lg:flex-row gap-8">
           {/* Cover Image */}
@@ -219,7 +219,10 @@ export default function ProductDetail() {
             </div>
 
             <div className="flex flex-col gap-4 mb-8">
-              <button className="w-full bg-primary-green hover:bg-secondary-green transition-colors duration-300 text-white px-4 py-2 flex items-center justify-center">
+              <button
+                onClick={() => router.push("/cart")}
+                className="w-full bg-primary-green hover:bg-secondary-green transition-colors duration-300 text-white px-4 py-2 flex items-center justify-center"
+              >
                 <FaShoppingCart className="mr-2" /> Add to Cart
               </button>
               <button

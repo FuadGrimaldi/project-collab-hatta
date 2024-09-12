@@ -40,7 +40,6 @@ const initialCartItems = [
 export default function CartPage() {
   const [cartItems, setCartItems] = useState(initialCartItems);
   const [selectedItems, setSelectedItems] = useState({});
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
 
   const updateQuantity = (id, newQuantity) => {
     setCartItems(
@@ -80,9 +79,13 @@ export default function CartPage() {
   const serviceFee = subtotal * 0.05;
   const total = subtotal + serviceFee;
 
+  const hasItems = Object.values(selectedItems).some(
+    (isSelected) => isSelected
+  );
+
   return (
     <div>
-      <Navbar isLoggedIn={isLoggedIn} userName={"Firyal"} />
+      <Navbar />
       <div className="mx-auto px-8 lg:px-16 pt-32">
         <div className="flex flex-col lg:flex-row gap-8">
           <div className="w-full lg:w-2/3">
@@ -99,6 +102,7 @@ export default function CartPage() {
               subtotal={subtotal}
               serviceFee={serviceFee}
               total={total}
+              hasItems={hasItems} // Assuming cartItems is an array of items in the cart
             />
           </div>
         </div>

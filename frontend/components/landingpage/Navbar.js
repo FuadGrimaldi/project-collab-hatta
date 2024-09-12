@@ -21,8 +21,12 @@ import { useState } from "react";
 import { TiShoppingCart } from "react-icons/ti";
 import { IoSearchOutline } from "react-icons/io5";
 import { RxCross1 } from "react-icons/rx";
+import { useAuth } from "../../context/AuthContext"; // Import the Auth context
 
-export default function Navbar({ isLoggedIn, userName }) {
+export default function Navbar() {
+  const { isLoggedIn, userName, logout } = useAuth(); // Use the Auth context
+  console.log("isloggedinnn", isLoggedIn);
+
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -111,11 +115,12 @@ export default function Navbar({ isLoggedIn, userName }) {
               </Link>
               <div className="border-t border-primary-gray "></div>
 
-              <Link href="/login">
-                <div className="block px-4 py-6 hover:bg-primary-gray">
-                  <FaSignOutAlt className="inline mr-2" /> Logout
-                </div>
-              </Link>
+              <div
+                onClick={logout}
+                className="block px-4 py-6 hover:bg-primary-gray"
+              >
+                <FaSignOutAlt className="inline mr-2" /> Logout
+              </div>
             </div>
           )}
         </div>
@@ -230,11 +235,13 @@ export default function Navbar({ isLoggedIn, userName }) {
                         <FaQuestion className="inline mr-2" /> FAQ
                       </div>
                     </Link>
-                    <Link href="/login">
-                      <div className="block px-4 py-4 hover:bg-primary-gray">
-                        <FaSignOutAlt className="inline mr-2" /> Logout
-                      </div>
-                    </Link>
+
+                    <div
+                      onClick={logout}
+                      className="block px-4 py-4 hover:bg-primary-gray"
+                    >
+                      <FaSignOutAlt className="inline mr-2" /> Logout
+                    </div>
                   </div>
                 )}
               </div>
