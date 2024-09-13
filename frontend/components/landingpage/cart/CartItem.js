@@ -9,7 +9,7 @@ export default function CartItem({
   toggleSelection,
 }) {
   return (
-    <div className="relative flex flex-row gap-4 lg:gap-8 py-8 px-0 lg:px-12 first:-mt-[0.2px]">
+    <div className="text-primary-white relative flex flex-row gap-4 lg:gap-8 py-8 px-0 lg:px-12 first:-mt-[0.2px]">
       <div className="absolute inset-x-4 lg:inset-x-12 top-0 h-[0.2px] bg-primary-gray"></div>
 
       <div className="flex items-center justify-center">
