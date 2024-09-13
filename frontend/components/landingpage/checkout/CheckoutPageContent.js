@@ -9,7 +9,7 @@ export default function CheckoutPageContent({ items, totalItems, totalPrice }) {
   const [selectedMethod, setSelectedMethod] = useState("");
 
   return (
-    <div className="flex flex-col lg:flex-row gap-8 mt-8">
+    <div className="text-primary-white flex flex-col lg:flex-row gap-8 mt-8">
       <div className="w-full lg:w-2/3">
         <div className="bg-secondary-black p-6 shadow-md border border-white">
           <h2 className="text-xl font-semibold">Checkout</h2>
@@ -52,7 +52,7 @@ export default function CheckoutPageContent({ items, totalItems, totalPrice }) {
 
 function CheckoutItemTitle() {
   return (
-    <div className="hidden lg:flex items-start gap-16 py-4 border-b border-gray-200 last:border-b-0">
+    <div className="text-primary-white hidden lg:flex items-start gap-16 py-4 border-b border-gray-200 last:border-b-0">
       <h2 className="text-xl font-semibold mb-4 ">Produk</h2>
 
       <div className="flex gap-4 justify-between w-full">
@@ -71,7 +71,7 @@ function CheckoutItemTitle() {
 
 function CheckoutItem({ item }) {
   return (
-    <div className="flex items-start gap-4 lg:gap-16 py-6 lg:py-8 border-b border-gray-200 last:border-b-0">
+    <div className="text-primary-white flex items-start gap-4 lg:gap-16 py-6 lg:py-8 border-b border-gray-200 last:border-b-0">
       <Image
         src={item.coverImage}
         alt={item.title}

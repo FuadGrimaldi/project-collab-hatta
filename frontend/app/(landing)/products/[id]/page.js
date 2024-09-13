@@ -163,7 +163,9 @@ export default function ProductDetail() {
 
           {/* Product Details */}
           <div className="w-full lg:w-3/6">
-            <h1 className="text-2xl font-bold mb-2">{product.title}</h1>
+            <h1 className="text-primary-white text-2xl font-bold mb-2">
+              {product.title}
+            </h1>
 
             {/* Rating dan Feedback */}
             <div className="flex items-center mb-4">
@@ -205,7 +207,7 @@ export default function ProductDetail() {
               <span className="text-lg font-normal text-primary-gray">
                 Price
               </span>
-              <span className="text-2xl font-bold mb-2">
+              <span className="text-primary-white text-2xl font-bold mb-2">
                 Rp {product.discountedPrice.toLocaleString()}
               </span>
               <div className="flex items-center gap-2">
@@ -227,7 +229,7 @@ export default function ProductDetail() {
               </button>
               <button
                 onClick={toggleWishlist}
-                className="w-full border border-primary-gray px-4 py-2 flex items-center justify-center  transition-colors duration-300 hover:text-primary-red hover:border-primary-red"
+                className="text-primary-white w-full border border-primary-gray px-4 py-2 flex items-center justify-center  transition-colors duration-300 hover:text-primary-red hover:border-primary-red"
               >
                 {isInWishlist ? (
                   <FaHeart className="mr-2 text-primary-red" />
@@ -283,7 +285,7 @@ export default function ProductDetail() {
           <div>
             <div className="flex flex-col relative mb-4">
               <div className="absolute bottom-0 left-0 right-0 h-px bg-gray-200"></div>
-              <h2 className="text-xl lg:text-2xl font-bold mb-3">
+              <h2 className="text-primary-white text-xl lg:text-2xl font-bold mb-3">
                 Product Description
               </h2>
               <span className="absolute bottom-0 left-0 right-0 h-[2px] w-64 bg-primary-blue"></span>
@@ -293,7 +295,7 @@ export default function ProductDetail() {
           <div>
             <div className="flex flex-col relative mb-4">
               <div className="absolute bottom-0 left-0 right-0 h-px bg-gray-200"></div>
-              <h2 className="text-xl lg:text-2xl font-bold mb-3">
+              <h2 className="text-primary-white text-xl lg:text-2xl font-bold mb-3">
                 Game Detail
               </h2>
               <span className="absolute bottom-0 left-0 right-0 h-[2px] w-44 md:w-64 bg-primary-blue"></span>
@@ -308,7 +310,9 @@ export default function ProductDetail() {
             ))}
             <div className="flex flex-col relative mb-4 mt-16 lg:mt-6">
               <div className="absolute bottom-0 left-0 right-0 h-px bg-gray-200"></div>
-              <h2 className="text-xl lg:text-2xl font-bold mb-3">Languages</h2>
+              <h2 className="text-primary-white text-xl lg:text-2xl font-bold mb-3">
+                Languages
+              </h2>
               <span className="absolute bottom-0 left-0 right-0 h-[2px] w-44 md:w-64 bg-primary-blue"></span>
             </div>
             <span className="text-primary-white">{product.languages}</span>
@@ -317,7 +321,7 @@ export default function ProductDetail() {
             <div className="flex flex-col relative mb-4 ">
               <div className="absolute bottom-0 left-0 right-0 h-px bg-gray-200"></div>
               <div className="flex justify-between items-center">
-                <h2 className="text-xl lg:text-2xl font-bold mb-3">
+                <h2 className="text-primary-white text-xl lg:text-2xl font-bold mb-3">
                   System Requirement
                 </h2>
                 <div className="flex gap-4 pt-2">
@@ -355,7 +359,7 @@ export default function ProductDetail() {
             <div className="flex flex-col lg:flex-row mb-4 lg:hidden">
               <div className="w-full lg:w-5/6 flex flex-col lg:flex-row">
                 <div className="w-full lg:w-1/2 mb-4 lg:mb-0 lg:pr-4">
-                  <h3 className="text-lg font-semibold mb-3 block lg:hidden">
+                  <h3 className="text-primary-white text-lg font-semibold mb-3 block lg:hidden">
                     Minimum:
                   </h3>
                   {product.system.map((item, index) => (
@@ -370,7 +374,7 @@ export default function ProductDetail() {
                   ))}
                 </div>
                 <div className="w-full lg:w-1/2 lg:pl-4">
-                  <h3 className="text-lg font-semibold mb-3 lg:hidden">
+                  <h3 className="text-primary-white text-lg font-semibold mb-3 lg:hidden">
                     Recommended:
                   </h3>
                   {product.system.map((item, index) => (
@@ -417,7 +421,7 @@ export default function ProductDetail() {
         <div className="mt-16">
           <div className="flex flex-col relative mb-4">
             <div className="absolute bottom-0 left-0 right-0 h-px bg-gray-200"></div>
-            <h2 className="text-xl lg:text-2xl font-bold mb-3">
+            <h2 className="text-primary-white text-xl lg:text-2xl font-bold mb-3">
               You may like these products
             </h2>
             <span className="absolute bottom-0 left-0 right-0 h-[2px] w-44 md:w-80 bg-primary-blue"></span>
