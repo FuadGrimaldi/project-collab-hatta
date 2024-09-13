@@ -60,6 +60,25 @@ export default function Navbar() {
                 />
                 <RxCross1 size={24} onClick={() => setMenuOpen(false)} />
               </div>
+              {!isLoggedIn && (
+                <div className="flex flex-col p-4 gap-3">
+                  <Link href="/login">
+                    <div className="px-4 py-3 text-base text-center text-primary-white border border-primary-white hover:bg-primary-blue hover:border-primary-blue">
+                      LOGIN
+                    </div>
+                  </Link>
+                  <Link href="/register">
+                    <div
+                      className="px-4 py-3 text-base text-black text-center bg-primary-white
+                  hover:bg-secondary-gray"
+                    >
+                      SIGN UP
+                    </div>
+                  </Link>
+                </div>
+              )}
+              <div className="mt-4 border-t border-primary-gray"></div>
+
               <Link href="/settings/profile">
                 <div className="block px-4 py-6 hover:bg-primary-gray">
                   <FaUser className="inline mr-2" /> My Profile
@@ -247,16 +266,16 @@ export default function Navbar() {
               </div>
             </div>
           ) : (
-            <div className="flex items-center space-x-4">
+            <div className="hidden md:flex items-center space-x-4">
               <Link href="/login">
-                <div className="px-4 py-2 text-sm text-primary-gray border border-gray-300 rounded-md hover:bg-gray-100">
+                <div className="px-4 py-2 text-sm text-primary-gray border border-gray-300 hover:bg-gray-100">
                   Login
                 </div>
               </Link>
               <Link href="/register">
                 <div
                   className="px-4 py-2 text-sm text-white bg-primary-blue
-                 rounded-md hover:bg-secondary-blue"
+                  hover:bg-secondary-blue"
                 >
                   Sign Up
                 </div>
